@@ -13,17 +13,17 @@ body {
 	--cp-color-canvas-main: #ffffff;
 	--cp-color-canvas-inverted: #000000;
 	
-	--cp-color-brand-primary: #7F9E4F;
+	--cp-color-brand-primary: #313E48;
 	
 	--cp-color-ui-primary: var(--cp-color-brand-primary);
-	--cp-color-ui-secondary: #37423D;
-	--cp-color-ui-inverted: #E4D6CB;
-	--cp-color-ui-inverted-light: #F6F0ED;
+	--cp-color-ui-secondary: #40403F;
+	--cp-color-ui-inverted: #E5E8EF;
+	--cp-color-ui-inverted-light: #EBECED;
 	
-	--cp-color-ui-success: #1FC2A4;
-	--cp-color-ui-info: #7F23F7;
-	--cp-color-ui-warn: #FAB20A;
-	--cp-color-ui-danger: #F24441;	
+	--cp-color-ui-success: #008E9F;
+	--cp-color-ui-info: #884155;
+	--cp-color-ui-warn: #986C27;
+	--cp-color-ui-danger: #F26D63;	
 	
 	--cp-color-dark-text-primary: var(--cp-color-ui-inverted);
 	--cp-color-dark-text-secondary: var(--cp-color-ui-inverted-light);
@@ -59,8 +59,8 @@ body {
 	--cp-font-weight--normal: 400;
 	--cp-font-weight--bold: 500;
 	
-	--cp-font-family--base: Futura-PT, futura-pt, sans-serif;
-	--cp-font-family--header: Futura-PT, futura-pt, sans-serif;
+	--cp-font-family--base: 'Crimson Pro', 'Roboto', sans-serif;
+	--cp-font-family--header: 'Montserrat', sans-serif;
 	
 	// gaps, padding, margin
 	--cp-grid--gap: 1rem;
