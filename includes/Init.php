@@ -83,9 +83,9 @@ class Init {
 	 */
 	public function astra_options( $options_array, $option, $default ) {
 		$options_array['font-size-h1'] = [
-			'desktop'      => '3.052',
-			'tablet'       => '3.052',
-			'mobile'       => '3.052',
+			'desktop'      => '2.5',
+			'tablet'       => '2.5',
+			'mobile'       => '2.5',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
@@ -136,8 +136,8 @@ class Init {
 			'mobile-unit'  => 'em',
 		];
 
-		$options_array['body-font-family'] = "'Futura-PT',futura-pt,sans-serif";
-		$options_array['headings-font-family'] = "'Futura-PT',futura-pt,sans-serif";
+		$options_array['body-font-family'] = "Baskerville,serif";
+		$options_array['headings-font-family'] = "Montserrat,sans-serif";
 		
 		return $options_array;
 	}

@@ -236,16 +236,16 @@ class BB {
 			'A2A1A4',
 			
 			// ui colors
-			'7F9E4F',
-			'37423D',
-			'E4D6CB',
-			'F6F0ED',
+			'313E48',
+			'40403F',
+			'E5E8EF',
+			'EBECED',
 
 			// alert colors
-			'1FC2A4',
-			'7F23F7',
-			'FAB20A',
-			'F24441',
+			'008E9F',
+			'884155',
+			'986C27',
+			'F26D63',
 		);
 	}
 
