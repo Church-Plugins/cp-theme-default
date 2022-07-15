@@ -2,6 +2,7 @@
 
 p {
 	font-size: var(--cp-font-size);
+	line-height: 1.5;
 }
 
 %text-xlarge, .text-xlarge {
@@ -10,7 +11,7 @@ p {
 }
 
 %text-large, .text-large {
-	font-weight: 500;
+	font-weight: var(--cp-font-weight--bold);
 	font-size: var(--cp-font-size);
 }
 
@@ -26,5 +27,5 @@ p {
 	text-transform: uppercase;
 	letter-spacing: .08em;
 	line-height: 1.5;
-	font-weight: 500;
+	font-weight: var(--cp-font-weight--normal);
 }
