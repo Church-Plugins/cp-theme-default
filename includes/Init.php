@@ -174,7 +174,7 @@ class Init {
 			$wp_styles->registered['astra-theme-css']->src = get_stylesheet_uri();
 		}
 		
-		$this->enqueue->enqueue( 'theme', 'dynamic', [ 'in_footer' => false ] );
+//		$this->enqueue->enqueue( 'theme', 'dynamic', [ 'in_footer' => false ] );
 
 	}
 	

@@ -135,6 +135,11 @@ class TinyMCE {
 						'block'   => 'p',
 						'classes' => 'text-xsmall',
 					),
+					array(
+						'title'   => 'Italic (Yellowtail)',
+						'block'   => 'span',
+						'classes' => 'text-italic',
+					),
 				),
 			),
 		);
