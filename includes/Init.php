@@ -83,36 +83,36 @@ class Init {
 	 */
 	public function astra_options( $options_array, $option, $default ) {
 		$options_array['font-size-h1'] = [
-			'desktop'      => '2.5',
-			'tablet'       => '2.5',
-			'mobile'       => '2.5',
+			'desktop'      => '2.625',
+			'tablet'       => '2.625',
+			'mobile'       => '2.625',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
 		];
 
 		$options_array['font-size-h2'] = [
-			'desktop'      => '2.441',
-			'tablet'       => '2.441',
-			'mobile'       => '2.441',
+			'desktop'      => '2.4374',
+			'tablet'       => '2.4374',
+			'mobile'       => '2.4374',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
 		];
 
 		$options_array['font-size-h3'] = [
-			'desktop'      => '1.953',
-			'tablet'       => '1.953',
-			'mobile'       => '1.953',
+			'desktop'      => '1.953125',
+			'tablet'       => '1.953125',
+			'mobile'       => '1.953125',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
 		];
 
 		$options_array['font-size-h4'] = [
-			'desktop'      => '1.563',
-			'tablet'       => '1.563',
-			'mobile'       => '1.563',
+			'desktop'      => '1.5625',
+			'tablet'       => '1.5625',
+			'mobile'       => '1.5625',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
