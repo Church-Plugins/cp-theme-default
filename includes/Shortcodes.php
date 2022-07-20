@@ -70,7 +70,8 @@ class Shortcodes {
 			$location_id = $location['ID'];
 		}
 		
-		switch_to_blog( get_main_site_id() );
+		do_action( 'cploc_multisite_switch_to_main_site' );
+
 		$locations = \CP_Locations\Models\Location::get_all_locations( true );
 		
 		ob_start(); ?>
@@ -119,7 +120,8 @@ class Shortcodes {
 		</div>		
 		
 		<?php
-		restore_current_blog();
+		do_action( 'cploc_multisite_restore_current_blog' );
+
 		return ob_get_clean();
 	}
 	
