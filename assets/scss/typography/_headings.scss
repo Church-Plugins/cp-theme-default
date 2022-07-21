@@ -15,11 +15,15 @@ body .page-title {
 h1.page-title,
 .entry-content h1 {
 	color: var(--cp-color-text-primary);
-	font-size: $font-size-h1;
+	font-size: $font-size-h1 * $mobile-modifier;
 	line-height: $line-height-h1;
 	font-weight: var(--cp-font-weight--bold);
 	letter-spacing: .04em;
 	text-transform: uppercase;
+	
+	@include media-breakpoint-up(md) {
+		font-size: $font-size-h1;
+	}
 	
 	a {
 		color: var(--cp-color-text-primary);
@@ -30,10 +34,14 @@ h1.page-title,
 h2.page-title,
 .entry-content h2 {
 	color: var(--cp-color-text-primary);
-	font-size: $font-size-h2;
+	font-size: $font-size-h2 * $mobile-modifier;
 	line-height: $line-height-h2;
 	font-weight: var(--cp-font-weight--normal);
 	letter-spacing: .04em;
+
+	@include media-breakpoint-up(md) {
+		font-size: $font-size-h2;
+	}
 
 	a {
 		color: var(--cp-color-text-primary);
@@ -43,11 +51,15 @@ h2.page-title,
 %h3, h3, .h3,
 .entry-content h3 {
 	color: var(--cp-color-text-primary);
-	font-size: $font-size-h3;
+	font-size: $font-size-h3 * $mobile-modifier;
 	line-height: $line-height-h3;
 	font-weight: var(--cp-font-weight--bold);
 	letter-spacing: .06em;
 	text-transform: uppercase;
+
+	@include media-breakpoint-up(md) {
+		font-size: $font-size-h3;
+	}
 
 	a {
 		color: var(--cp-color-text-primary);

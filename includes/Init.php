@@ -40,6 +40,7 @@ class Init {
 		$this->actions();
 		
 		Shortcodes::get_instance();
+		Live::get_instance();
 		Integrations\BB::get_instance();
 		Integrations\TinyMCE::get_instance();
 		Integrations\EventsCalendar::get_instance();
@@ -85,7 +86,7 @@ class Init {
 		$options_array['font-size-h1'] = [
 			'desktop'      => '2.625',
 			'tablet'       => '2.625',
-			'mobile'       => '2.625',
+			'mobile'       => '1.935',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
@@ -94,7 +95,7 @@ class Init {
 		$options_array['font-size-h2'] = [
 			'desktop'      => '2.4374',
 			'tablet'       => '2.4374',
-			'mobile'       => '2.4374',
+			'mobile'       => '1.8',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
@@ -103,7 +104,7 @@ class Init {
 		$options_array['font-size-h3'] = [
 			'desktop'      => '1.953125',
 			'tablet'       => '1.953125',
-			'mobile'       => '1.953125',
+			'mobile'       => '1.44',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',

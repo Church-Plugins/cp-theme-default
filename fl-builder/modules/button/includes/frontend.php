@@ -32,6 +32,18 @@ if ( ! empty( $settings->icon_color ) ) {
 if ( ! empty( $icon_styles ) ) {
 	$icon_styles = ' style="' . $icon_styles . '"';
 }
+
+if ( 'live_watch' == $settings->click_action ) {
+	$title = array_map( 'trim', explode( '|', $settings->text ) );
+	if ( ! Church\Live::is_location_live() ) {
+		$settings->link = '/' . get_post_type_object( 'cpl_item' )->rewrite['slug'] . '/';
+		$settings->text = array_pop( $title );
+		$settings->icon = false;
+	} else {
+		$settings->text = array_shift( $title );
+	}
+}
+
 ?>
 <div class="<?php echo $module->get_classname(); ?>">
 	<?php if ( isset( $settings->click_action ) && 'lightbox' == $settings->click_action ) : ?>

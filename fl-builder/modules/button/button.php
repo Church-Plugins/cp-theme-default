@@ -140,9 +140,13 @@ FLBuilder::register_module('FLButtonModule', array(
 						'default' 		=> 'link',
 						'options' 		=> array(
 							'link' 			=> __( 'Link', 'fl-builder' ),
+							'live_watch'     => __( 'Live / Watch', 'fl-builder' ),
 							'lightbox' 		=> __( 'Lightbox', 'fl-builder' ),
 						),
 						'toggle'  => array(
+							'live_watch'		=> array(
+								'sections' => array( 'link' ),
+							),
 							'link'		=> array(
 								'sections' => array( 'link' ),
 							),

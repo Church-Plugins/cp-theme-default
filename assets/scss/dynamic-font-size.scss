@@ -3,13 +3,19 @@
 @import "variables-site/typography";
 
 $md-breakpoint: calc( map-get($grid-breakpoints, 'lg') / 1px ); // convert breakpoint to number
+$sm-breakpoint: calc( map-get($grid-breakpoints, 'sm') / 1px ); // convert breakpoint to number
 
 $lg-font-size: #{calc(16 / 1440 * 100)}vw; // 16px at 1440px screen width
 $md-font-size: #{calc(16 / $md-breakpoint * 100)}vw; // 16 pixels at medium breakpoint 
-$sm-font-size: #{calc(16 / 320 * 100)}vw; // 16 pixels at 320px screen width
+$sm-font-size: #{calc(16 / $sm-breakpoint * 100)}vw; // 16 pixels at 320px screen width
+$xs-font-size: #{calc(16 / 320 * 100)}vw; // 16 pixels at 320px screen width
 
 html {
-	font-size: var(--cp-font-size, $sm-font-size);
+	font-size: var(--cp-font-size, $xs-font-size);
+	
+	@include media-breakpoint-up(sm) {
+		font-size: var(--cp-font-size--bp-md, $sm-font-size);
+	}
 	
 	@include media-breakpoint-up(md) {
 		font-size: var(--cp-font-size--bp-md, $md-font-size);

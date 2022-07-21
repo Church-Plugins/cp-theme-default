@@ -429,9 +429,13 @@ FLBuilder::register_settings_form('buttons_form', array(
 							'default' => 'link',
 							'options' => array(
 								'link'     => __( 'Link', 'fl-builder' ),
+								'live_watch'     => __( 'Live / Watch', 'fl-builder' ),
 								'lightbox' => __( 'Lightbox', 'fl-builder' ),
 							),
 							'toggle'  => array(
+								'live_watch'     => array(
+									'fields' => array( 'link' ),
+								),
 								'link'     => array(
 									'fields' => array( 'link' ),
 								),
