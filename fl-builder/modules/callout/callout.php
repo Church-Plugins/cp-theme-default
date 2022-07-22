@@ -68,21 +68,23 @@ class FLCalloutModule extends FLBuilderModule {
 		echo '<' . $this->settings->title_tag . ' class="fl-callout-title">';
 
 		$this->render_image( 'left-title' );
+		
+		if ( ! empty( $this->settings->title ) ) {
+			echo '<span' . ( empty( $this->settings->link ) ? ' class="fl-callout-title-text"' : '' ) . '>';
 
-		echo '<span' . ( empty( $this->settings->link ) ? ' class="fl-callout-title-text"' : '' ) . '>';
+			if ( ! empty( $this->settings->link ) ) {
+				echo '<a href="' . $this->settings->link . '" target="' . $this->settings->link_target . '" class="fl-callout-title-link fl-callout-title-text">';
+			}
 
-		if ( ! empty( $this->settings->link ) ) {
-			echo '<a href="' . $this->settings->link . '" target="' . $this->settings->link_target . '" class="fl-callout-title-link fl-callout-title-text">';
+			echo $this->settings->title;
+
+			if ( ! empty( $this->settings->link ) ) {
+				echo '</a>';
+			}
+
+			echo '</span>';
 		}
-
-		echo $this->settings->title;
-
-		if ( ! empty( $this->settings->link ) ) {
-			echo '</a>';
-		}
-
-		echo '</span>';
-
+		
 		$this->render_image( 'right-title' );
 
 		echo '</' . $this->settings->title_tag . '>';
