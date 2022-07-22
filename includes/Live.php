@@ -208,8 +208,8 @@ class Live {
 	protected function time_check( $times ) {
 		$day       = strtolower( date( 'l', current_time( 'timestamp' ) ) );
 		$timestamp = current_time( 'timestamp' );
-		$buffer    = 10 * MINUTE_IN_SECONDS; // start watching 15 minutes before the start time
-		$duration  = 10 * MINUTE_IN_SECONDS; // how long we'll keep checking after the service should have started. Allow for the initial 15 min. 
+		$buffer    = 8 * MINUTE_IN_SECONDS; // start watching 15 minutes before the start time
+		$duration  = 12 * MINUTE_IN_SECONDS; // how long we'll keep checking after the service should have started. Allow for the initial 15 min. 
 		
 		if ( empty( $times ) ) {
 			return false;

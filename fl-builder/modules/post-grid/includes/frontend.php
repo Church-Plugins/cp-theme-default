@@ -1,4 +1,5 @@
 <?php
+
 // Save the current post, so that it can be restored later (see the end of this file).
 global $post;
 $initial_current_post = $post;

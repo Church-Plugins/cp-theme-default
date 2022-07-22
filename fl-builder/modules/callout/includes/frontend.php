@@ -1,3 +1,19 @@
+<?php
+
+ob_start();
+
+// Text
+$module->render_text();
+
+// Link CTA
+$module->render_link();
+
+// Button CTA
+$module->render_button();
+
+$content = ob_get_clean();
+
+?>
 <div class="<?php echo $module->get_classname(); ?>">
 	<?php
 	/**
@@ -26,21 +42,11 @@
 		// Image below title
 		$module->render_image( 'below-title' );
 
-		?>
+		if ( ! empty( $content ) ) : ?>
 		<div class="fl-callout-text-wrap">
-			<?php
-
-			// Text
-			$module->render_text();
-
-			// Link CTA
-			$module->render_link();
-
-			// Button CTA
-			$module->render_button();
-
-			?>
+			<?php echo $content ?>
 		</div>
+		<?php endif; ?>
 	</div>
 	<?php
 

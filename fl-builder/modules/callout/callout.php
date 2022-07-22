@@ -98,6 +98,10 @@ class FLCalloutModule extends FLBuilderModule {
 	 */
 	public function render_text() {
 		global $wp_embed;
+		
+		if ( empty( $this->settings->text ) ) {
+			return;
+		}
 
 		echo '<div class="fl-callout-text">' . wpautop( $wp_embed->autoembed( $this->settings->text ) ) . '</div>';
 	}

@@ -35,6 +35,7 @@
 				
 				.fl-callout-title-wrap {
 					position: relative;
+					margin: 0;
 				}
 				
 				.fl-callout-title-wrap-inner {
@@ -67,10 +68,20 @@
 		&.tribe_events {
 			
 			.fl-callout-photo-above-title {
+				.fl-callout-title-wrap {
+					margin:  0;
+					position: relative;
+					&-inner {
+						position: absolute;
+						width: 100%;
+						left: 0;
+						bottom: 100%;
+					}
+				}
+				
 				.fl-callout-title {
 					position: relative;
 					padding: var(--cp-gap--sm) var(--cp-gap--sm) var(--cp-gap-base) !important;
-					margin:  calc( var(--cp-gap--sm) * -2 - 1em ) 0 0;
 					z-index: 15;
 					color: var( --cp-color-ui-inverted-light );
 					

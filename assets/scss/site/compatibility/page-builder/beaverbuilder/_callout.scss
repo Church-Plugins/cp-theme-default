@@ -7,7 +7,6 @@ body .fl-post-grid-post {
 }
 
 body .fl-callout {
-	padding-bottom: var(--cp-gap-base);
 	overflow: hidden;
 	height: 100%;
 
@@ -35,9 +34,13 @@ body .fl-callout {
 	}
 
 	&-photo-above-title {
-		.fl-callout-title, .fl-callout-text-wrap, .fl-callout-subtitle {
+		.fl-callout-title-wrap, .fl-callout-text-wrap, .fl-callout-subtitle {
 			padding: 0;
-			margin: var(--cp-gap--sm) var(--cp-gap--sm) var(--cp-gap-base);
+			margin: var(--cp-gap--sm) var(--cp-gap--sm) 0;
+			
+			&:last-child {
+				margin-bottom: var(--cp-gap--sm);
+			}
 		}
 	}
 
@@ -47,6 +50,10 @@ body .fl-callout {
 
 	&-button {
 		padding-top: var(--cp-gap--sm);
+	}
+	
+	&-content {
+		//padding-bottom: var(--cp-gap-base);
 	}
 	
 	&-text-wrap,

@@ -76,11 +76,46 @@ class BB {
 		}
 		
 		add_filter( 'fl_builder_loop_taxonomies', [ $this, 'custom_taxonomies' ], 10, 3 );
+		
+		add_filter( 'fl_builder_loop_query_args', [ $this, 'custom_query_args' ] );		
 
 	}
 
 	/** Actions **************************************/
 
+	/**
+	 * Custom query args for Events
+	 * 
+	 * @param $args
+	 *
+	 * @return mixed
+	 * @since  1.0.0
+	 *
+	 * @author Tanner Moushey
+	 */
+	public function custom_query_args( $args ) {
+		if ( 'tribe_events' == $args['post_type'] ) {
+			$args['eventDisplay'] = 'custom';
+
+			if ( empty( $arts['meta_query'] ) ) {
+				$args['meta_query'] = [];
+			}
+
+			$args['meta_query'][] = [
+				'key'     => '_EventStartDate',
+				'value'   => current_time( 'Y-m-d H:i' ),
+				'compare' => '>=',
+			];
+
+			if ( 'date' == $args['orderby'] ) {
+				$args['orderby']  = '_EventStartDate';
+				$args['meta_key'] = '_EventStartDate';
+			}
+		}
+
+		return $args;
+	}
+	
 	public function add_role_to_body( $classes ) {
 		$current_user = new \WP_User( get_current_user_id() );
 		$user_role    = array_shift( $current_user->roles );
