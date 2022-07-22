@@ -23,6 +23,55 @@
 	}
 } 
 
+// styles for the hero row
+div.fl-row.hero {
+	
+	@include media-breakpoint-up(sm) {
+		.fl-col:first-child {
+			.fl-module-content {
+				margin-right: 1em;
+			}
+		}
+		
+		.fl-col:last-child {
+			.fl-module-content {
+				margin-right: -10rem;
+			}
+			
+			img {
+				border-top-right-radius: 0;
+				border-bottom-right-radius: 0;
+			}
+		}
+		
+	}
+	
+	@include media-breakpoint-down(sm) {
+		
+		.fl-col:first-child {
+			.fl-col-content {
+				padding-bottom: 0;
+			}
+		}
+		
+		.fl-col:last-child {
+			img {
+				border-radius: 0;
+			}
+		}		
+		
+		> .fl-row-content-wrap {
+			padding-bottom: 4em;
+		}
+		
+		.fl-col-group {
+			display: flex;
+			flex-direction: column-reverse;
+		}
+	}
+	
+}
+
 
 .cp-not-live a[href$="/live/"] i {
 	//display: none;
