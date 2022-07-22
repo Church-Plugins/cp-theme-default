@@ -36,10 +36,13 @@ body .fl-callout {
 	&-photo-above-title {
 		.fl-callout-title-wrap, .fl-callout-text-wrap, .fl-callout-subtitle {
 			padding: 0;
-			margin: var(--cp-gap--sm) var(--cp-gap--sm) 0;
+			margin: var(--cp-gap--sm) var(--cp-gap--md) 0;
 			
+			&:nth-child(2) {
+				margin-top: var(--cp-gap--md);
+			}
 			&:last-child {
-				margin-bottom: var(--cp-gap--sm);
+				margin-bottom: var(--cp-gap--md);
 			}
 		}
 	}
@@ -72,7 +75,12 @@ body .fl-callout {
 		padding: 0;
 		display: flex;
 		flex-flow: column;
-		align-items: center;
+		align-items: stretch;
+		
+		.fl-callout-title > span {
+			margin-bottom: var(--cp-gap--sm);
+			display: block;
+		}
 
 		.fl-callout-content {
 			padding: var(--cp-gap--md);
