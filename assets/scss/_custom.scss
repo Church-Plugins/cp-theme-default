@@ -11,7 +11,7 @@
 	}
 	
 	// hide subscribe dorpdown on location pages
-	.tribe-events-c-subscribe-dropdown__container {
+	&:not(.single-tribe_events) .tribe-events-c-subscribe-dropdown__container {
 		display: none !important;
 	}
 }
@@ -27,6 +27,32 @@
 		display: none !important;
 	}
 } 
+
+.tribe-events-single {
+	.tribe-events-schedule {
+		.tribe-events {
+			order: 99;
+			padding-top: var(--cp-gap--sm);
+			align-self: center;
+			
+			@include media-breakpoint-up(sm) {
+				margin-left: auto;
+				padding-left: var(--cp-gap--md);
+				padding-top: 0;
+			}
+			
+			.tribe-events-c-subscribe-dropdown {
+				margin: auto;
+				display: flex;
+				
+				&__container,
+				&__button {
+					width: auto;
+				}
+			}
+		}
+	}
+}
 
 // styles for the hero row
 div.fl-row.hero {

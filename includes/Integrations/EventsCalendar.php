@@ -53,6 +53,8 @@ class EventsCalendar {
 		add_filter( 'tribe_context_locations', [ $this, 'filter_context_locations' ] );
 		add_filter( 'tribe_events_filter_bar_context_to_filter_map', [ $this, 'filter_map' ] );
 		add_action( 'tribe_events_filters_create_filters', [ $this, 'create_filter' ] );
+		
+		remove_action( 'tribe_events_single_event_after_the_content', [ tribe( 'tec.iCal' ), 'single_event_links' ] );
 	}
 
 	/** Actions **************************************/
