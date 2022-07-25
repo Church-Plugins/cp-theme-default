@@ -10,11 +10,10 @@
 		display: none;
 	}
 	
-	// hide filter bar on location pages
-	//.tribe-events-c-subscribe-dropdown__container,
-	//.tribe-filter-bar-c-filter__toggle {
-	//	display: none !important;
-	//}
+	// hide subscribe dorpdown on location pages
+	.tribe-events-c-subscribe-dropdown__container {
+		display: none !important;
+	}
 }
 
 .cp_location-none {
