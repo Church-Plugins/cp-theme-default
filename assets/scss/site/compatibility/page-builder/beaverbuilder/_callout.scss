@@ -75,7 +75,7 @@ body .fl-callout {
 		padding: 0;
 		display: flex;
 		flex-flow: column;
-		align-items: stretch;
+		align-items: center;
 		
 		.fl-callout-title > span {
 			margin-bottom: var(--cp-gap--sm);
@@ -95,6 +95,7 @@ body .fl-callout {
 
 			.fl-callout-photo {
 				display: flex;
+				align-self: stretch;
 				position: relative;
 				align-items: center;
 				flex-basis: 33%;

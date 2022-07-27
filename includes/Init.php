@@ -39,6 +39,7 @@ class Init {
 	protected function __construct() {
 		$this->actions();
 		
+		Custom::get_instance();
 		Shortcodes::get_instance();
 		Live::get_instance();
 		Integrations\BB::get_instance();
