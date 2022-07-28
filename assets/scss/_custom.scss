@@ -154,8 +154,8 @@ div.fl-row.hero {
 }
 
 .cploc-list {
-	padding: var(--cp-gap--lg);
-	max-width: var(--cp-content-width);
+	padding: var(--cp-gap--lg) 0;
+	max-width: calc(var(--cp-content-width) - var(--cp-gap--md));
 	margin: auto;
 }
 
