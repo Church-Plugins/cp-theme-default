@@ -13,7 +13,7 @@ body .page-title {
 
 %h1, h1, .h1,
 h1.page-title,
-.entry-content h1 {
+.ast-single-post .entry-content h1 {
 	color: var(--cp-color-text-primary);
 	font-size: $font-size-h1 * $mobile-modifier;
 	line-height: $line-height-h1;
@@ -25,12 +25,13 @@ h1.page-title,
 	
 	a {
 		color: var(--cp-color-text-primary);
+		text-decoration: none;
 	}
 }
 
 %h2, h2, .h2,
 h2.page-title,
-.entry-content h2 {
+.ast-single-post .entry-content h2 {
 	color: var(--cp-color-text-primary);
 	font-size: $font-size-h2 * $mobile-modifier;
 	line-height: $line-height-h2;
@@ -42,11 +43,12 @@ h2.page-title,
 
 	a {
 		color: var(--cp-color-text-primary);
+		text-decoration: none;
 	}
 }
 
 %h3, h3, .h3,
-.entry-content h3 {
+.ast-single-post .entry-content h3 {
 	color: var(--cp-color-text-primary);
 	font-size: $font-size-h3 * $mobile-modifier;
 	line-height: $line-height-h3;
@@ -58,15 +60,21 @@ h2.page-title,
 
 	a {
 		color: var(--cp-color-text-primary);
+		text-decoration: none;
 	}
 }
 
 %h4, h4, .h4,
-.entry-content h4 {
+.ast-single-post .entry-content h4 {
 	color: var(--cp-color-text-primary);
 	line-height: $line-height-h4;
 	font-size: $font-size-h4;
 	font-weight: var(--cp-font-weight--bold);
+	
+	a {
+		color: var(--cp-color-text-primary);
+		text-decoration: none;
+	}
 }
 
 %h5, h5, .h5,
