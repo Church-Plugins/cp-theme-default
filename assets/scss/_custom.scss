@@ -57,6 +57,10 @@
 // styles for the hero row
 div.fl-row.hero {
 	
+	.fl-photo-content {
+		width: 100%;
+	}
+	
 	@include media-breakpoint-up(sm) {
 		.fl-col:first-child {
 			.fl-module-content {
