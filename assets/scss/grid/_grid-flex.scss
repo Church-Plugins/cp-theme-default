@@ -30,6 +30,27 @@
     }
 }
 
+@include media-breakpoint-down( 'sm' ) {
+  .ast-container-fluid, .ast-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--cp-gap--sm);
+    padding-right: var(--cp-gap--sm);
+  }
+
+
+  // Row
+  //
+  // Rows contain and clear the floats of your columns.
+
+  @if $enable-grid-classes {
+    .ast-row {
+      margin-left: calc( var(--cp-gap--sm) * -1 );
+      margin-right: calc( var(--cp-gap--sm) * -1 );
+    }
+  }
+}
+
 .ast{
 
     &-grid-common-col {
