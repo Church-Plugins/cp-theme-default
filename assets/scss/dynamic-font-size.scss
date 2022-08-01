@@ -8,7 +8,7 @@ $sm-breakpoint: calc( map-get($grid-breakpoints, 'sm') / 1px ); // convert break
 $lg-font-size: #{calc(16 / 1440 * 100)}vw; // 16px at 1440px screen width
 $md-font-size: #{calc(16 / $md-breakpoint * 100)}vw; // 16 pixels at medium breakpoint 
 $sm-font-size: #{calc(16 / $sm-breakpoint * 100)}vw; // 16 pixels at 320px screen width
-$xs-font-size: #{calc(16 / 400 * 100)}vw; // 16 pixels at 320px screen width
+$xs-font-size: #{calc(16 / 320 * 100)}vw; // 16 pixels at 320px screen width
 
 html {
 	font-size: var(--cp-font-size, $xs-font-size);
