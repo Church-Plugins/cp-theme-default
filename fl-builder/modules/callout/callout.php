@@ -89,7 +89,7 @@ class FLCalloutModule extends FLBuilderModule {
 
 		echo '</' . $this->settings->title_tag . '>';
 		
-		if ( $this->settings->subtitle ) {
+		if ( ! empty( $this->settings->subtitle ) ) {
 			echo '<h5 class="fl-callout-subtitle">' . $this->settings->subtitle . '</h5>';
 		}
 		echo '</div></div>';
@@ -129,7 +129,7 @@ class FLCalloutModule extends FLBuilderModule {
 				'button_size'      => $this->settings->button_size,
 				'button_width'     => $this->settings->button_width,
 				'button_color'     => $this->settings->button_color,
-				'button_text'      => $this->settings->button_text,
+				'button_text'      => $this->settings->cta_text,
 				'button_align'     => $this->settings->button_align,
 				'icon'             => $this->settings->btn_icon,
 				'icon_position'    => $this->settings->btn_icon_position,

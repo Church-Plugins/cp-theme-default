@@ -2,15 +2,15 @@
 
 $button_node_id = "fl-node-$id";
 
+if ( empty( $settings->button_text ) ) {
+	$settings->button_text = $settings->text;
+}
+
 if ( isset( $settings->id ) && ! empty( $settings->id ) ) {
 	$button_node_id = $settings->id;
 }
 
 $button_classes = 'fl-button ';
-
-if ( 'enable' == $settings->icon_animation ) {
-	$button_classes .= 'fl-button-icon-animation ';
-}
 
 $button_classes .= $settings->button_style . ' ' . $settings->button_size . ' ' . $settings->button_color . ' ' . $settings->button_text;
 

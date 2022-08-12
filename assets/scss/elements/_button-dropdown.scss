@@ -3,7 +3,6 @@ $dropdown-content-offset: 4px !default;
 $dropdown-content-z: 20 !default;
 
 .dropdown {
-  display: inline-flex;
   position: relative;
   vertical-align: top;
 
@@ -11,6 +10,14 @@ $dropdown-content-z: 20 !default;
   &.is-hoverable:hover {
     .dropdown-menu {
       display: block;
+    }
+  }
+
+  &.is-left {
+    .dropdown-menu {
+      right: auto;
+      left: 0;
+      text-align: left;
     }
   }
 
@@ -39,6 +46,10 @@ $dropdown-content-z: 20 !default;
   position: absolute;
   top: 100%;
   z-index: $dropdown-content-z;
+  
+  a {
+    text-decoration: none !important;
+  }
 }
 
 .dropdown-content {

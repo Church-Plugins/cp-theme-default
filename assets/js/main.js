@@ -23,9 +23,11 @@ import 'selectize';
 
 		if ($dropdowns.length > 0) {
 			$dropdowns.forEach(function ($el) {
-				$el.addEventListener('click', function (event) {
+				$el = $($el);
+				$el.on('click', '.dropdown-trigger', function (event) {
+					event.preventDefault();
 					event.stopPropagation();
-					$el.classList.toggle('is-active');
+					$el.toggleClass('is-active');
 				});
 			});
 
