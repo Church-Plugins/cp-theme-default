@@ -94,7 +94,7 @@ class Shortcodes {
 						<i data-feather="map-pin" class="is-small" aria-hidden="true"></i>
 						<span class="text-small"><?php echo get_the_title( $location_id ); ?></span>
 					<?php else : ?>
-						<span class="text-small"><?php _e( 'Select a Location', 'cp-theme-default'); ?></span>
+						<span class="text-small"><?php echo $atts['default-text']; ?></span>
 					<?php endif; ?>
 					<i data-feather="chevron-down" aria-hidden="true"></i>
 				</a>
