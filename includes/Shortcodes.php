@@ -71,7 +71,6 @@ class Shortcodes {
 		}
 		
 		do_action( 'cploc_multisite_switch_to_main_site' );
-
 		$locations = \CP_Locations\Models\Location::get_all_locations( true );
 		
 		ob_start(); ?>
@@ -121,7 +120,6 @@ class Shortcodes {
 		
 		<?php
 		do_action( 'cploc_multisite_restore_current_blog' );
-
 		return ob_get_clean();
 	}
 	
