@@ -69,10 +69,11 @@ class Shortcodes {
 			'button-class' => 'is-transparent is-large is-em',
 			'show-map'     => true,
 			'relative'     => 'false',
-			'exclude'      => '',
+			'include'      => '',
+			'default-text' => __( 'Select a Location', 'cp-theme-default'),
 		], $atts, 'cp-location-dropdown' );
 		
-		$exclude = array_map( 'trim', explode( ',', $atts['exclude'] ) );
+		$include = array_filter( array_map( 'trim', explode( ',', $atts['include'] ) ) );
 		$location_id = get_query_var( 'cp_location_id' );
 		
 		if ( $location = \CP_Locations\Setup\Taxonomies\Location::get_rewrite_location() ) {
@@ -103,7 +104,7 @@ class Shortcodes {
 					<div class="dropdown-item">
 						<?php foreach ( $locations as $location ) :
 							
-							if ( in_array( $location->ID, $exclude ) ) {
+							if ( ! empty( $include ) && ! in_array( $location->ID, $include ) ) {
 								continue;
 							}
 							
