@@ -4,65 +4,68 @@
 		position: relative;
 		
 		&.cp_staff {
-
-			.fl-callout {
-				&-photo-left,
-				&-photo-right {
-					.fl-callout-subtitle {
-						margin-top: 0;
-					}
-					.fl-callout-title-wrap {
-						margin-bottom: var( --cp-gap--sm );
-					}
-				}
+			.fl-callout-subtitle {
+				@extend .text-xlarge;
 			}
-			
-			.fl-callout-photo-above-title {
-				
-				.fl-callout-photo {
-					position: relative;
-				}
-				
-				.fl-callout-photo a:after {
-						content: '';
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						background: rgba(66, 66, 66, 0.4);
-						left: 0;
-						top: 0;
-				}
-				
+
+			//.fl-callout {
+			//	&-photo-left,
+			//	&-photo-right {
+			//		.fl-callout-subtitle {
+			//			margin-top: 0;
+			//		}
+			//		.fl-callout-title-wrap {
+			//			margin-bottom: var( --cp-gap--sm );
+			//		}
+			//	}
+			//}
+			//
+			//.fl-callout-photo-above-title {
+			//	
+			//	.fl-callout-photo {
+			//		position: relative;
+			//	}
+			//	
+			//	.fl-callout-photo a:after {
+			//			content: '';
+			//			position: absolute;
+			//			width: 100%;
+			//			height: 100%;
+			//			background: rgba(66, 66, 66, 0.4);
+			//			left: 0;
+			//			top: 0;
+			//	}
+			//	
 				.fl-callout-title-wrap {
 					position: relative;
 					margin: 0;
 				}
-				
-				.fl-callout-title-wrap-inner {
-					position: absolute;
-					bottom: 0;
-					left: 0;
-					padding-bottom: var(--cp-gap--md);
-				}
-				
+			//	
+			//	.fl-callout-title-wrap-inner {
+			//		position: absolute;
+			//		bottom: 0;
+			//		left: 0;
+			//		padding-bottom: var(--cp-gap--md);
+			//	}
+			//	
 				.fl-callout-title, .fl-callout-subtitle {
 					position: relative;
-					padding: var(--cp-gap-base) var(--cp-gap--md) 0 !important;
-					margin: 0;
+					//padding: var(--cp-gap-base) var(--cp-gap--md) 0 !important;
+					margin: 0 !important;
 					z-index: 15;
-					color: var( --cp-color-ui-inverted-light );
-					
-					a, a:hover {
-						color: var( --cp-color-ui-inverted-light );
-					}
-				}
+					//color: var( --cp-color-ui-inverted-light );
 
-				.fl-callout-text-wrap {
-					margin-top: var( --cp-gap--md );
-					margin-bottom: var( --cp-gap--sm );
+					//a, a:hover {
+					//	color: var( --cp-color-ui-inverted-light );
+					//}
 				}
-				
-			}
+			//
+			//	.fl-callout-text-wrap {
+			//		margin-top: var( --cp-gap--md );
+			//		margin-bottom: var( --cp-gap--sm );
+			//	}
+			//	
+			//}
 		}
 		
 		&.tribe_events {
