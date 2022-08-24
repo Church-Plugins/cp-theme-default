@@ -41,6 +41,8 @@ class Custom {
 	 * @return void
 	 */
 	protected function actions() {
+		
+		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
 
 		add_action( 'plugins_loaded', function () {
 			if ( ! function_exists( 'cp_locations' ) || ! function_exists( 'cp_library' ) ) {
@@ -180,4 +182,28 @@ class Custom {
 
 	/** Actions **************************************/
 
+	/**
+	 * Return a map of the congregation IDs from Ministry Platform
+	 * 
+	 * @param $map
+	 *
+	 * @return array
+	 * @since  1.0.0
+	 *
+	 * @author Tanner Moushey
+	 */
+	public function congregation_map( $map ) {
+		return [
+			1  => 'location_399', // 'Wexford',
+			//			2 => 'Miscellaneous',
+			4  => 'location_400', // 'City',
+			5  => 'location_401', // 'Sewickley Valley',
+			//			6 => 'City East',
+			9  => 'global',
+			11 => 'location_402', // 'dormont',
+			13 => 'location_403', // 'Beaver Valley',
+			14 => 'location_404', // 'Robinson',
+			//			15 => 'Ministry Hubs',
+		];
+	}
 }
