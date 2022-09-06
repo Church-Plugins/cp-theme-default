@@ -102,7 +102,7 @@ class BB {
 			}
 
 			$args['meta_query'][] = [
-				'key'     => '_EventStartDate',
+				'key'     => '_EventEndDate',
 				'value'   => current_time( 'Y-m-d H:i' ),
 				'compare' => '>=',
 			];
