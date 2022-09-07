@@ -47,7 +47,9 @@ class Custom {
 		
 		add_filter( 'cp_location_single_label', function() { return 'Campus'; } );
 		add_filter( 'cp_location_plural_label', function() { return 'Campuses'; } );
-
+		
+		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
+		
 		add_action( 'plugins_loaded', function () {
 			if ( ! function_exists( 'cp_locations' ) || ! function_exists( 'cp_library' ) ) {
 				return;
@@ -209,5 +211,17 @@ class Custom {
 			14 => 'location_404', // 'Robinson',
 			//			15 => 'Ministry Hubs',
 		];
+	}
+	
+	public function staff_email_link( $settings ) {
+		if ( 'cp_staff' != get_post_type() ) {
+			return $settings;
+		}
+
+		if ( $email = get_post_meta( get_the_ID(), 'email', true ) ) {
+			$settings['link'] = 'mailto:' . $email;
+		}
+
+		return $settings;
 	}
 }
