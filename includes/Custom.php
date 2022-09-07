@@ -50,6 +50,8 @@ class Custom {
 		
 		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
 		
+		add_filter( 'post_type_link', [ $this, 'local_partner_link' ], 10, 2 );
+		
 		add_action( 'plugins_loaded', function () {
 			if ( ! function_exists( 'cp_locations' ) || ! function_exists( 'cp_library' ) ) {
 				return;
@@ -223,5 +225,21 @@ class Custom {
 		}
 
 		return $settings;
+	}
+	
+	public function local_partner_link( $link, $post ) {
+		if ( 'cp_ministries' !== $post->post_type ) {
+			return $link;
+		}
+		
+		if ( ! has_term( 'local-partner', 'cp_type', $post ) ) {
+			return $link;
+		}
+		
+		if ( ! $action = get_post_meta( $post->ID, 'contact_action', true ) ) {
+			return $link;
+		}
+		
+		return $action;
 	}
 }
