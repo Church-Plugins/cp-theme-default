@@ -42,7 +42,11 @@ class Custom {
 	 */
 	protected function actions() {
 		
+		add_filter( 'cp_groups_disable_archive', '__return_true' );
 		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
+		
+		add_filter( 'cp_location_single_label', function() { return 'Campus'; } );
+		add_filter( 'cp_location_plural_label', function() { return 'Campuses'; } );
 
 		add_action( 'plugins_loaded', function () {
 			if ( ! function_exists( 'cp_locations' ) || ! function_exists( 'cp_library' ) ) {
