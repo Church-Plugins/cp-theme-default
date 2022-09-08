@@ -48,8 +48,8 @@ class Custom {
 		add_filter( 'cp_location_single_label', function() { return 'Campus'; } );
 		add_filter( 'cp_location_plural_label', function() { return 'Campuses'; } );
 
-		add_action( 'cploc_location_meta_details', [ $this, 'add_social_meta' ], 10 , 2 );
-		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
+//		add_action( 'cploc_location_meta_details', [ $this, 'add_social_meta' ], 10 , 2 );
+//		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
 		
 		
 		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
