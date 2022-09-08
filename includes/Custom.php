@@ -384,7 +384,6 @@ class Custom {
 
 		// if we are on a campus page, customize the icons
 		if ( $location_id = get_query_var( 'cp_location_id' ) ) {
-			switch_to_blog( get_main_site_id() );
 			foreach ( $options_array['footer-social-icons-1']['items'] as $key => $item ) {
 				if ( $url = get_post_meta( $location_id, $item['id'], true ) ) {
 					$options_array['footer-social-icons-1']['items'][ $key ]['url']     = esc_url( $url );
@@ -393,7 +392,6 @@ class Custom {
 					$options_array['footer-social-icons-1']['items'][ $key ]['enabled'] = false;
 				}
 			}
-			restore_current_blog();
 		}
 
 
