@@ -45,6 +45,8 @@ class Custom {
 		add_filter( 'cp_groups_disable_archive', '__return_true' );
 		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
 		
+		add_filter( 'cp_connect_chms_mp_groups_filter', [ $this, 'mp_groups_filter' ] );
+		
 		add_filter( 'cp_location_single_label', function() { return 'Campus'; } );
 		add_filter( 'cp_location_plural_label', function() { return 'Campuses'; } );
 
@@ -396,6 +398,10 @@ class Custom {
 
 
 		return $options_array;
+	}
+	
+	public function mp_groups_filter( $filter ) {
+		return "(Groups.End_Date >= getdate() OR Groups.End_Date IS NULL) AND Group_Type NOT IN ('Age or Grade Group', 'Ministry Team', 'Parent Group', 'Staff')";
 	}
 	
 }
