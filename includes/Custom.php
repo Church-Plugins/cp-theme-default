@@ -52,6 +52,9 @@ class Custom {
 		
 		add_filter( 'cp_live_video_location_id_default', function() { return 399; } ); // Wexford is the only livestreaming campus
 
+		add_action( 'tribe_events_single_event_after_the_content', [ $this, 'event_registration' ], 2 );
+		add_action( 'cp_group_single_after_content', [ $this, 'group_registration' ] );
+		
 //		add_action( 'cploc_location_meta_details', [ $this, 'add_social_meta' ], 10 , 2 );
 //		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
 		
@@ -404,6 +407,45 @@ class Custom {
 	
 	public function mp_groups_filter( $filter ) {
 		return "(Groups.End_Date >= getdate() OR Groups.End_Date IS NULL) AND Group_Type NOT IN ('Age or Grade Group', 'Ministry Team', 'Parent Group', 'Staff')";
+	}
+
+	/**
+	 * Show registration button if registration is active
+	 * 
+	 * @since  1.0.0
+	 *
+	 * @author Tanner Moushey
+	 */
+	public function event_registration() {
+		if ( ! get_post_meta( get_the_ID(), 'cp_registration_active', true ) ) {
+			return;
+		}
+		
+		$start_date = get_post_meta( get_the_ID(), 'cp_registration_start', true );
+		$end_date   = get_post_meta( get_the_ID(), 'cp_registration_end', true );
+		
+		if ( $start_date && strtotime( $start_date ) > current_time( 'timestamp' ) ) {
+			return;
+		}
+		
+		if ( $end_date && strtotime( $end_date ) < current_time( 'timestamp' ) ) {
+			return;
+		}
+		
+		printf( '<div><a href="%s" class="cp-button is-large" target="_blank">Register Now</a></div>', 'https://my.northway.org/portal/event_signup.aspx?id=' . get_post_meta( get_the_ID(), '_chms_id', true ) );
+	}
+
+	/**
+	 * Add button to contact group
+	 * 
+	 * @param $item
+	 *
+	 * @since  1.0.0
+	 *
+	 * @author Tanner Moushey
+	 */
+	public function group_registration( $item ) {
+		printf( '<div><a href="%s" class="cp-button is-large" target="_blank">Contact Group</a></div>', 'https://home.northway.org/small-group-details/?id=' . get_post_meta( $item['id'], '_chms_id', true ) );
 	}
 	
 }
