@@ -126,7 +126,7 @@ class Shortcodes {
 								
 								<div class="cp-location-dropdown--item--content">
 									<div class="cp-location-dropdown--item--title"><?php echo get_the_title( $location->ID ); ?></div>
-									<div class="cp-location-dropdown--item--desc text-xsmall"><?php echo $loc->subtitle; ?></div>
+									<div class="cp-location-dropdown--item--desc text-xsmall"><?php echo nl2br( esc_html( $loc->subtitle ) ); ?></div>
 								</div>
 							</a>
 						<?php endforeach; ?>
