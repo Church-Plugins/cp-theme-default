@@ -47,7 +47,7 @@ class Live {
 	 */
 	public static function is_location_live( $location_id = false) {
 		if ( ! $location_id ) {
-			$location_id = get_query_var( 'cp_location_id' );
+			$location_id = apply_filters( 'cp_live_video_location_id_default', get_query_var( 'cp_location_id' ) );
 		}
 		
 		if ( empty( $location_id ) ) {
@@ -93,13 +93,6 @@ class Live {
 	 * @author Tanner Moushey
 	 */
 	public function check() {
-		$args = [
-			'part'      => 'snippet',
-			'type'      => 'video',
-			'eventType' => 'live',
-		];
-
-		$url = 'https://www.googleapis.com/youtube/v3/search';
 
 		$sites_live_video = get_site_option( 'cp_sites_live_video', [] );
 		$sites_live       = get_site_option( 'cp_sites_live', [] );
@@ -129,32 +122,60 @@ class Live {
 				continue;
 			}
 			
-			// set the ChannelID
-			$args['channelId'] = $data['channel'];
-			$args['key']       = $data['api_key'];
+			$video_id = $this->get_channel_status( $data['channel'], $data['api_key'] );
 
-			$search   = add_query_arg( $args, $url );
-			$response = wp_remote_get( $search );
-
-			// if we don't have a valid body, bail early
-			if ( ! $body = wp_remote_retrieve_body( $response ) ) {
+			// if we don't have a video, bail early
+			if ( ! $video_id ) {
 				continue;
 			}
 
-			$body = json_decode( $body );
-			
-			// make sure we have items
-			if ( empty( $body->items ) ) {
-				continue;
-			}
-			
-			$sites_live[ $site_id ] = [ 'video_id' => $body->items[0]->id->videoId, 'started' => time() ];
-			$sites_live_video[ $site_id ] = $body->items[0]->id->videoId;
+			$sites_live[ $site_id ] = [ 'video_id' => $video_id, 'started' => time() ];
+			$sites_live_video[ $site_id ] = $video_id;
 		}
 	
 		// live_video doesn't get overwritten with null values, so it will always have the latest video
 		update_site_option( 'cp_sites_live', $sites_live );
 		update_site_option( 'cp_sites_live_video', $sites_live_video );
+	}
+
+	/**
+	 * Check the status of a channel, return the video_id if live
+	 * 
+	 * @param $channel_id
+	 * @param $api_key
+	 *
+	 * @return false
+	 * @since  1.0.1
+	 *
+	 * @author Tanner Moushey
+	 */
+	protected function get_channel_status( $channel_id, $api_key ) {
+		$args = [
+			'part'      => 'snippet',
+			'type'      => 'video',
+			'eventType' => 'live',
+			'channelID' => $channel_id,
+			'key'       => $api_key,
+		];
+
+		$url = 'https://www.googleapis.com/youtube/v3/search';
+
+		$search   = add_query_arg( $args, $url );
+		$response = wp_remote_get( $search );
+
+		// if we don't have a valid body, bail early
+		if ( ! $body = wp_remote_retrieve_body( $response ) ) {
+			return false;
+		}
+
+		$body = json_decode( $body );
+
+		// make sure we have items
+		if ( empty( $body->items ) ) {
+			return false;
+		}
+		
+		return $body->items[0]->id->videoId;
 	}
 
 	/**
@@ -175,7 +196,9 @@ class Live {
 		}
 		
 		$sites = [];
-		switch_to_blog( get_main_site_id() );
+		
+		do_action( 'cploc_multisite_switch_to_main_site' );
+
 		$locations = \CP_Locations\Models\Location::get_all_locations(true);
 		
 		foreach( $locations as $location ) {
@@ -189,7 +212,7 @@ class Live {
 			}
 		}
 		
-		restore_current_blog();
+		do_action( 'cploc_multisite_restore_current_blog');
 		
 		set_site_transient( 'cp_sites_to_check', $sites );
 		return $sites;
@@ -246,7 +269,6 @@ class Live {
 	public function live_video_cb() {
 		global $wp_embed;
 		$sites_live_video = get_site_option( 'cp_sites_live_video', [] );
-		$sites_live       = get_site_option( 'cp_sites_live', [] );
 
 		if ( empty( $sites_live_video ) ) {
 			return __( 'No live feeds were found', 'cp-theme-default' );
@@ -254,7 +276,9 @@ class Live {
 
 		$output = '<div class="cp-live-container">';
 		
-		if ( $location_id = get_query_var( 'cp_location_id' ) ) {
+		$location_id = apply_filters( 'cp_live_video_location_id_default', get_query_var( 'cp_location_id' ) );
+		
+		if ( $location_id ) {
 			if ( empty( $sites_live_video[ $location_id ] ) ) {
 				return __( 'No live feeds were found', 'cp-theme-default' );
 			} else {

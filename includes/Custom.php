@@ -49,6 +49,8 @@ class Custom {
 		
 		add_filter( 'cp_location_single_label', function() { return 'Campus'; } );
 		add_filter( 'cp_location_plural_label', function() { return 'Campuses'; } );
+		
+		add_filter( 'cp_live_video_location_id_default', function() { return 399; } ); // Wexford is the only livestreaming campus
 
 //		add_action( 'cploc_location_meta_details', [ $this, 'add_social_meta' ], 10 , 2 );
 //		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
