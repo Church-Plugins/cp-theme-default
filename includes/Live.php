@@ -308,7 +308,16 @@ class Live {
 	 *
 	 * @author Tanner Moushey
 	 */
-	public function location_meta( $cmb, $object ) {
+	public function location_meta() {
+		$cmb = new_cmb2_box( [
+			'id' => 'location_live_meta',
+			'title' => __( 'Live Video', 'cp-locations' ),
+			'object_types' => [ cp_locations()->setup->post_types->locations->post_type ],
+			'context' => 'normal',
+			'priority' => 'high',
+			'show_names' => true,
+		] );
+		
 		$cmb->add_field( [
 			'name'        => __( 'YouTube Channel ID', 'cp-theme-default' ),
 			'id'          => 'youtube_channel_id',
