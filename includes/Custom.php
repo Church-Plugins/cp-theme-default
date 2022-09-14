@@ -445,7 +445,7 @@ class Custom {
 	 * @author Tanner Moushey
 	 */
 	public function group_registration( $item ) {
-		printf( '<div><a href="%s" class="cp-button is-large" target="_blank">Contact Group</a></div>', 'https://home.northway.org/small-group-details/?id=' . get_post_meta( $item['id'], '_chms_id', true ) );
+		printf( '<div><a href="%s" class="cp-button is-large" target="_blank">Contact Group</a></div>', '/small-group-details/?id=' . get_post_meta( $item['id'], '_chms_id', true ) );
 	}
 	
 }
