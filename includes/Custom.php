@@ -43,9 +43,10 @@ class Custom {
 	protected function actions() {
 		
 		add_filter( 'cp_groups_disable_archive', '__return_true' );
-		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
 		
+		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
 		add_filter( 'cp_connect_chms_mp_groups_filter', [ $this, 'mp_groups_filter' ] );
+		add_filter( 'cp_connect_pull_groups', [ $this, 'mp_groups' ], 100 );
 		
 		add_filter( 'cp_location_single_label', function() { return 'Campus'; } );
 		add_filter( 'cp_location_plural_label', function() { return 'Campuses'; } );
@@ -202,6 +203,37 @@ class Custom {
 
 	/** Actions **************************************/
 
+	/**
+	 * Update data coming from MP
+	 * 
+	 * @param $groups
+	 *
+	 * @return mixed
+	 * @since  1.0.0
+	 *
+	 * @author Tanner Moushey
+	 */
+	public function mp_groups( $groups ) {
+		
+		if ( empty( $groups ) ) {
+			return $groups;
+		}
+		
+		foreach( $groups as &$group ) {
+			if ( empty( $group['group_category'] ) ) {
+				continue;
+			}
+			
+			foreach( $group['group_category'] as &$category ) {
+				if ( 'Bible & Book Study' == $category ) {
+					$category = 'Small Group';
+				}
+			}
+		}
+		
+		return $groups;
+	}
+	
 	/**
 	 * Return a map of the congregation IDs from Ministry Platform
 	 * 

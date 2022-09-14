@@ -51,13 +51,15 @@ body {
 	font-family: 'Yellowtail', handwriting;
 }
 
+.cp-group-item--type {
+	display: none;
+}
 
 .cp-not-live a[href$="/live/"] i {
 	//display: none;
 }
 
 .cp-location-header {
-	@extend %text-xlarge;
 	height: 100%;
 	display: block;
 	border-left: 1px solid var(--cp-color-text-primary);
