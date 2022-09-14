@@ -406,7 +406,7 @@ class Custom {
 	}
 	
 	public function mp_groups_filter( $filter ) {
-		return "(Groups.End_Date >= getdate() OR Groups.End_Date IS NULL) AND Group_Type NOT IN ('Age or Grade Group', 'Ministry Team', 'Parent Group', 'Staff')";
+		return "(Groups.End_Date >= getdate() OR Groups.End_Date IS NULL) AND Group_Type NOT IN ('Age or Grade Group', 'Ministry Team', 'Parent Group', 'Staff', 'Other Group') AND Available_Online = 1 AND Group_Is_Full = 0";
 	}
 
 	/**
