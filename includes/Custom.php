@@ -55,8 +55,9 @@ class Custom {
 		add_action( 'tribe_events_single_event_after_the_content', [ $this, 'event_registration' ], 2 );
 		add_action( 'cp_group_single_after_content', [ $this, 'group_registration' ] );
 		
-//		add_action( 'cploc_location_meta_details', [ $this, 'add_social_meta' ], 10 , 2 );
-//		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
+		add_action( 'cploc_location_meta_details', [ $this, 'add_social_meta' ], 10 , 2 );
+		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
+		add_filter( 'widget_display_callback', [ $this, 'footer_menu'], 10, 3 );		
 		
 		
 		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
@@ -275,77 +276,59 @@ class Custom {
 			'show_names'   => true,
 		] );
 
-//		$menus = wp_list_pluck( wp_get_nav_menus(), 'name', 'slug' );
-//		$menus = array_merge( [ 0 => 'Use Default' ], $menus );
+		$menus = wp_list_pluck( wp_get_nav_menus(), 'name', 'slug' );
+		$menus = array_merge( [ 0 => 'Use Default' ], $menus );
+
+		$cmb_footer->add_field( [
+			'name'        => __( 'Menus', 'cp-theme-default' ),
+			'id'          => 'menus_title',
+			'type'        => 'title',
+			'description' => __( 'Leave blank to use the default menu', 'cp-theme-default' ),
+		] );
 
 //		$cmb_footer->add_field( [
-//			'name'        => __( 'Menus', 'christpres-core' ),
-//			'id'          => 'menus_title',
-//			'type'        => 'title',
-//			'description' => __( 'Leave blank to use the default menu', 'christpres-core' ),
-//		] );
-//
-//		$cmb_footer->add_field( [
-//			'name'    => __( 'Discover Menu', 'christpres-core' ),
+//			'name'    => __( 'Discover Menu', 'cp-theme-default' ),
 //			'id'      => 'discover_menu',
 //			'type'    => 'select',
 //			'options' => $menus,
 //		] );
 //
 //		$cmb_footer->add_field( [
-//			'name'    => __( 'Next Steps Menu', 'christpres-core' ),
+//			'name'    => __( 'Next Steps Menu', 'cp-theme-default' ),
 //			'id'      => 'next_steps_menu',
 //			'type'    => 'select',
 //			'options' => $menus,
 //		] );
 //
-//		$cmb_footer->add_field( [
-//			'name'    => __( 'Ministries Menu', 'christpres-core' ),
-//			'id'      => 'ministries_menu',
-//			'type'    => 'select',
-//			'options' => $menus,
-//		] );
-
 		$cmb_footer->add_field( [
-			'name'        => __( 'Social', 'christpres-core' ),
-			'id'          => 'social_title',
-			'type'        => 'title',
-			'description' => __( 'Leave blank disable the social icon.', 'christpres-core' ),
+			'name'    => __( 'Ministries Menu', 'cp-theme-default' ),
+			'id'      => 'ministries_menu',
+			'type'    => 'select',
+			'options' => $menus,
 		] );
 
 		$cmb_footer->add_field( [
-			'name' => __( 'YouTube', 'christpres-core' ),
+			'name'        => __( 'Social', 'cp-theme-default' ),
+			'id'          => 'social_title',
+			'type'        => 'title',
+			'description' => __( 'Leave blank to use the global setting.', 'cp-theme-default' ),
+		] );
+
+		$cmb_footer->add_field( [
+			'name' => __( 'YouTube', 'cp-theme-default' ),
 			'id'   => 'youtube',
 			'type' => 'text_url',
 		] );
 
 		$cmb_footer->add_field( [
-			'name' => __( 'Facebook', 'christpres-core' ),
+			'name' => __( 'Facebook', 'cp-theme-default' ),
 			'id'   => 'facebook',
 			'type' => 'text_url',
 		] );
 
 		$cmb_footer->add_field( [
-			'name' => __( 'Twitter', 'christpres-core' ),
-			'id'   => 'twitter',
-			'type' => 'text_url',
-		] );
-
-		$cmb_footer->add_field( [
-			'name' => __( 'Instagram', 'christpres-core' ),
+			'name' => __( 'Instagram', 'cp-theme-default' ),
 			'id'   => 'instagram',
-			'type' => 'text_url',
-		] );
-
-		$cmb_footer->add_field( [
-			'name' => __( 'SoundCloud', 'christpres-core' ),
-			'id'   => 'soundcloud',
-			'type' => 'text_url',
-		] );
-
-		$cmb_footer->add_field( [
-			'name' => __( 'Podcast', 'christpres-core' ),
-			'id'   => 'podcast',
 			'type' => 'text_url',
 		] );
 		
@@ -365,29 +348,26 @@ class Custom {
 	 */
 	public function campus_social( $options_array, $option, $default ) {
 		$social = [
-			'twitter'    => [ 'label' => 'Twitter' ],
 			'youtube'    => [ 'label' => 'YouTube' ],
 			'instagram'  => [ 'label' => 'Instagram' ],
-			'soundcloud' => [ 'label' => 'SoundCloud' ],
-			'podcast'    => [ 'label' => 'Podcast' ],
 			'facebook'   => [ 'label' => 'Facebook' ]
 		];
 
-		foreach ( $options_array['footer-social-icons-1']['items'] as $key => $item ) {
-			if ( isset( $social[ $item['id'] ] ) ) {
-				unset( $social[ $item['id'] ] );
-			}
-		}
+//		foreach ( $options_array['footer-social-icons-1']['items'] as $key => $item ) {
+//			if ( isset( $social[ $item['id'] ] ) ) {
+//				unset( $social[ $item['id'] ] );
+//			}
+//		}
 
 		// Add our custom social... make sure that all expected social networks are available
-		foreach ( $social as $id => $details ) {
-			$options_array['footer-social-icons-1']['items'][] = [
-				'id'      => $id,
-				'icon'    => $id,
-				'label'   => $details['label'],
-				'enabled' => false,
-			];
-		}
+//		foreach ( $social as $id => $details ) {
+//			$options_array['footer-social-icons-1']['items'][] = [
+//				'id'      => $id,
+//				'icon'    => $id,
+//				'label'   => $details['label'],
+//				'enabled' => false,
+//			];
+//		}
 
 		// if we are on a campus page, customize the icons
 		if ( $location_id = get_query_var( 'cp_location_id' ) ) {
@@ -395,14 +375,52 @@ class Custom {
 				if ( $url = get_post_meta( $location_id, $item['id'], true ) ) {
 					$options_array['footer-social-icons-1']['items'][ $key ]['url']     = esc_url( $url );
 					$options_array['footer-social-icons-1']['items'][ $key ]['enabled'] = true;
-				} else {
-					$options_array['footer-social-icons-1']['items'][ $key ]['enabled'] = false;
 				}
 			}
 		}
 
 
 		return $options_array;
+	}
+
+	/**
+	 * Use custom menu for ministry location
+	 * 
+	 * @param $instance
+	 * @param $widget
+	 * @param $args
+	 *
+	 * @return mixed
+	 * @since  1.0.0
+	 *
+	 * @author Tanner Moushey
+	 */
+	public function footer_menu( $instance, $widget, $args ) {
+		if ( 'nav_menu' !== $widget->id_base ) {
+			return $instance;
+		}
+
+		$menu_map = [
+			'footer-widget-4' => 'ministries_menu',
+		];
+
+		if ( ! isset( $menu_map[ $args['id'] ] ) ) {
+			return $instance;
+		}
+
+		if ( ! $location_id = get_query_var( 'cp_location_id' ) ) {
+			return $instance;
+		}
+
+		$new_menu = get_post_meta( $location_id, $menu_map[ $args['id'] ], true );
+
+		if ( ! $new_menu ) {
+			return $instance;
+		}
+
+		$instance['nav_menu'] = $new_menu;
+
+		return $instance;
 	}
 	
 	public function mp_groups_filter( $filter ) {
