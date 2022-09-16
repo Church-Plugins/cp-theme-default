@@ -112,7 +112,7 @@ class Init {
 			return $html;
 		} 
 
-		return str_replace( home_url( '/' ), get_the_permalink( $location_id ), $html );
+		return str_replace( 'href="' . home_url( '/' ),  'href="' . get_the_permalink( $location_id ), $html );
 	}
 	
 	/**
