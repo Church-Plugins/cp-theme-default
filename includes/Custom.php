@@ -60,6 +60,11 @@ class Custom {
 		add_filter( 'astra_get_option_array', [ $this, 'campus_social' ], 10, 3 );
 		add_filter( 'widget_display_callback', [ $this, 'footer_menu'], 10, 3 );		
 		
+		add_filter( 'wp_head', function() {
+			if ( isset( $_GET['app'] ) ) {
+				echo '<style>header.site-header,footer.site-footer{display:none;}</style>';
+			}
+		} );
 		
 		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
 		
