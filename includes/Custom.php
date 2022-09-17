@@ -42,6 +42,8 @@ class Custom {
 	 */
 	protected function actions() {
 		
+		add_filter( 'cp_loc_mapbox_api_key', function() { return 'pk.eyJ1IjoibWwtY2hyaXN0cHJlcyIsImEiOiJjbDZmMnVuYXEwOGE0M2NteGc2cTdhcG1oIn0.DCNVIretmE9hMEnuB-VLQg'; } );
+		
 		add_filter( 'cp_groups_disable_archive', '__return_true' );
 		
 		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
