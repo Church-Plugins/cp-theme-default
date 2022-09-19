@@ -154,7 +154,7 @@ class Live {
 			'part'      => 'snippet',
 			'type'      => 'video',
 			'eventType' => 'live',
-			'channelID' => $channel_id,
+			'channelId' => $channel_id,
 			'key'       => $api_key,
 		];
 
