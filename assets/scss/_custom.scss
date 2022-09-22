@@ -16,6 +16,11 @@ body {
 			display: flex;
 			align-items: center;
 		}
+		
+		.fl-callout-photo-above-title .fl-callout-text-wrap {
+			height: 0;
+			margin: 0;
+		}
 	}
 }
 
