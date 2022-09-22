@@ -118,6 +118,16 @@ if ( $strip_breaks ) {
 	$content = preg_replace( '|(?<!<br />)\s*\n|', "",  $content );
 }
 
+$photo_crop = 'landscape';
+
+if ( 'cp_staff' === $settings->post_type ) {
+	$photo_crop = 'portrait';
+}
+
+if ( in_array( $position, [ 'left', 'right' ] ) ) {
+	$photo_crop = 'landscape';
+}
+
 $callout_settings = apply_filters( 'cp_post_grid_callout_settings', [
 	"title"          => get_the_title(),
 	"subtitle"       => $subtitle,
@@ -128,21 +138,13 @@ $callout_settings = apply_filters( 'cp_post_grid_callout_settings', [
 	"image_type"     => "photo",
 	"photo"          => get_post_thumbnail_id(),
 	"photo_src"      => get_the_post_thumbnail_url(),
-	"photo_crop"     => "landscape",
+	"photo_crop"     => apply_filters( 'cp_post_grid_photo_crop', $photo_crop, $settings, $module ),
 	"photo_position" => $position,
 	"photo_size"     => "cover",
 	"link"           => get_the_permalink(),
 	"link_target"    => "_self",
 	"link_nofollow"  => "no",
 ], $settings, $module );
-
-if ( 'cp_staff' === $settings->post_type ) {
-	$callout_settings['photo_crop'] = 'portrait';
-}
-
-if ( in_array( $position, [ 'left', 'right' ] ) ) {
-	$callout_settings['photo_crop'] = 'landscape';
-}
 
 ?>
 
