@@ -92,6 +92,13 @@ class Custom {
 			return $types;
 		} );
 		
+		add_filter( 'cp_post_grid_photo_crop', function( $photo_crop, $settings ) {
+			if ( 'tribe_events' !== $settings->post_type ) {
+				return $photo_crop;
+			}
+			
+			return false;
+		}, 10, 2 );
 
 
 		add_action( 'cmb2_after_form', function ( $post_id, $cmb ) {
