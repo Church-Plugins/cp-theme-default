@@ -8,6 +8,15 @@ body {
 			transform: translate(-50%,-50%) scale(1);
 		}
 	} 
+	
+	.fl-post-grid-image-above-title.tribe_events {
+		.fl-photo-content {
+			aspect-ratio: 16 / 9;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+		}
+	}
 }
 
 .cp-groups-filter--cp_group_type {
