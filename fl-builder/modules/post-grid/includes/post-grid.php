@@ -135,6 +135,7 @@ $callout_settings = apply_filters( 'cp_post_grid_callout_settings', [
 	"align"          => $settings->post_align,
 	"bg_color"       => $settings->bg_color,
 	"title_tag"      => $settings->posts_title_tag,
+	"subtitle_tag"   => $settings->posts_subtitle_tag,
 	"image_type"     => "photo",
 	"photo"          => get_post_thumbnail_id() ? get_post_thumbnail_id() : $settings->image_fallback,
 	"photo_src"      => get_the_post_thumbnail_url() ? get_the_post_thumbnail_url() : $settings->image_fallback_src,
