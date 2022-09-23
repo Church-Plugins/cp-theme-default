@@ -116,6 +116,36 @@ body {
 	}
 }
 
+body .cploc-container--mobile {
+	.cploc-map--locations {
+
+		@include media-breakpoint-down(xs) {
+			&--location {
+				padding-left: var(--cp-gap--sm);
+				
+				.cploc-map-location--content {
+					padding-top: 0;
+				}
+				
+				.cploc-map-location--desc {
+					padding-right: var(--cp-gap--md);
+				}
+			}
+			
+			&--mode.cploc-map-mode--location {
+				.material-icons {
+					margin-right: 0;
+				}
+
+				.cploc-map--locations--mode--text {
+					display: none;
+				}
+			}
+		}
+		
+	}
+}
+
 #cploc_root {
 	.leaflet-tooltip {
 		@extend %text-em;
