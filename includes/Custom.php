@@ -55,6 +55,8 @@ class Custom {
 		
 		add_filter( 'cp_live_video_location_id_default', function() { return 399; } ); // Wexford is the only livestreaming campus
 
+		add_filter( 'cp_theme_post_grid_default_subtitle_tag', function() { return 'p'; } ); // default tag for subtitle
+
 		add_action( 'tribe_events_single_event_after_the_content', [ $this, 'event_registration' ], 2 );
 		add_action( 'cp_group_single_after_content', [ $this, 'group_registration' ] );
 		
