@@ -13,7 +13,7 @@ module.exports = {
 	host: 'localhost',
 	// Your WordPress development server address
 	// This is super important
-	proxy: 'http://church.local',
+	proxy: 'http://calvaryphx.local',
 	https: true,
 	// PORT on your localhost where you would want live server to hook
 	port: 3000,

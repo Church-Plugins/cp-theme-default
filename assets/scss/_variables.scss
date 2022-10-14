@@ -13,16 +13,16 @@ body {
 	--cp-color-canvas-main: #ffffff;
 	--cp-color-canvas-inverted: #000000;
 	
-	--cp-color-brand-primary: #7F9E4F;
+	--cp-color-brand-primary: #108599;
 	
 	--cp-color-ui-primary: var(--cp-color-brand-primary);
-	--cp-color-ui-secondary: #37423D;
-	--cp-color-ui-inverted: #E4D6CB;
+	--cp-color-ui-secondary: #1D5A5c;
+	--cp-color-ui-inverted: #CCD6D6;
 	--cp-color-ui-inverted-light: #F6F0ED;
 	
-	--cp-color-ui-success: #1FC2A4;
-	--cp-color-ui-info: #7F23F7;
-	--cp-color-ui-warn: #FAB20A;
+	--cp-color-ui-success: #51315B;
+	--cp-color-ui-info: #1FC2A4;
+	--cp-color-ui-warn: #CE8E2C;
 	--cp-color-ui-danger: #F24441;	
 	
 	--cp-color-dark-text-primary: var(--cp-color-ui-inverted);
@@ -96,8 +96,8 @@ body {
 	--cp-box-shadow--xl: 0px 0px 4px rgba(0, 0, 0, 0.08), 0px 6px 32px rgba(0, 0, 0, 0.16);
 
 	// border radius
-	--cp-border-radius-sm: 2px;
-	--cp-border-radius: 4px;
-	--cp-border-radius-lg: 20px;
+	--cp-border-radius-sm: 4px;
+	--cp-border-radius: 12px;
+	--cp-border-radius-lg: 24px;
 	--cp-border-radius-round: 100px;
 }

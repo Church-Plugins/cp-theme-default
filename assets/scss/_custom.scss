@@ -1,3 +1,7 @@
+.tribe-events-event-meta {
+	width: 100% !important;
+}
+
 .cp_location-none {
 	.location-show {
 		display: none;
@@ -218,5 +222,69 @@ div.fl-row.hero {
 .cpl-widget--single-item {
 	a:not(:hover) {
 		text-decoration: none !important;
+	}
+}
+
+
+.fl-post-grid {
+
+	&-post {
+
+		&.tribe_events {
+
+			// set title in the image container
+			.fl-callout-photo-above-title {
+				.fl-callout-title-wrap {
+					margin: 0;
+					position: relative;
+
+					&-inner {
+						position: absolute;
+						width: 100%;
+						left: 0;
+						bottom: 100%;
+					}
+				}
+
+				.fl-callout-title {
+					position: relative;
+					padding: var(--cp-gap--sm) var(--cp-gap--sm) var(--cp-gap-base) !important;
+					z-index: 15;
+					color: var(--cp-color-ui-inverted-light);
+
+					a, a:hover {
+						color: var(--cp-color-ui-inverted-light);
+					}
+
+					&:after {
+						content: '';
+						position: absolute;
+						width: 100%;
+						height: 100%;
+						background: var(--cp-color-ui-secondary);
+						opacity: .8;
+						left: 0;
+						top: 0;
+						z-index: -1;
+					}
+				}
+
+				.fl-callout-text-wrap {
+					margin: 0;
+				}
+
+			}
+
+			.fl-callout {
+				&-photo-left,
+				&-photo-right {
+					@include media-breakpoint-up('md') {
+						.fl-callout-photo {
+							width: 40.5%;
+						}
+					}
+				}
+			}
+		}
 	}
 }

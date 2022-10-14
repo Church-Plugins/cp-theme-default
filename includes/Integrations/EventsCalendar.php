@@ -47,7 +47,7 @@ class EventsCalendar {
 	 */
 	protected function actions() {
 		add_filter( 'tribe_events_pro_inline_placeholders', [ $this, 'inline_placeholders' ] );
-		add_action( 'init', [ $this, 'register_ministry_tax' ], 999 );
+		add_action( 'init', [ $this, 'register_ministry_tax' ], 500 );
 		
 		// filterbar
 		add_filter( 'tribe_context_locations', [ $this, 'filter_context_locations' ] );

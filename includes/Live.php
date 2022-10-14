@@ -26,6 +26,10 @@ class Live {
 	 * Add Hooks and Actions
 	 */
 	public function __construct() {
+		if ( function_exists( 'cp_live' ) ) {
+			return;
+		}
+		
 		add_filter( 'cron_schedules', [ $this, 'schedules' ] );
 		add_action( 'init', [ $this, 'register_event' ] );
 		add_action( 'cp_live_check', [ $this, 'check' ] );

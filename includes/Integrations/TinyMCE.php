@@ -148,12 +148,12 @@ class TinyMCE {
 			"5F5B64", "Secondary",
 			"76737A", "Tertiary",
 			"A2A1A4", "Disabled",
-			"1FC2A4", "Success",
-			"7F23F7", "Info",
-			"FAB20A", "Warn",
+			"51315B", "Success",
+			"1FC2A4", "Info",
+			"CE8E2C", "Warn",
 			"F24441", "Danger",
-			"7F9E4F", "Brand Primary",
-			"37423D", "Brand Secondary",
+			"108599", "Brand Primary",
+			"F6F0ED", "Brand Secondary",
 		]';
 		
 		$settings['toolbar2'] = str_replace( 'fontsizeselect,', '', $settings['toolbar2'] );
