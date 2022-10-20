@@ -43,11 +43,11 @@ class Custom {
 	 * @return void
 	 */
 	protected function actions() {
-		add_filter( 'cp_connect_active_chms', function() {return 'pco';});
-		add_action( 'tribe_events_single_event_after_the_content', [ $this, 'event_registration' ], 2 );
-		add_filter( 'cp_connect_pco_event_args', [ $this, 'event_args' ] );
-		add_filter( 'cp_connect_process_items', [ $this, 'filter_groups' ], 10, 2 );
-		add_action( 'admin_init', [ $this, 'update_sermon_meta' ] );
+//		add_filter( 'cp_connect_active_chms', function() {return 'pco';});
+//		add_action( 'tribe_events_single_event_after_the_content', [ $this, 'event_registration' ], 2 );
+//		add_filter( 'cp_connect_pco_event_args', [ $this, 'event_args' ] );
+//		add_filter( 'cp_connect_process_items', [ $this, 'filter_groups' ], 10, 2 );
+//		add_action( 'admin_init', [ $this, 'update_sermon_meta' ] );
 	}
 
 	/** Actions **************************************/
