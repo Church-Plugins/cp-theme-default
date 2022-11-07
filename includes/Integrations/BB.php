@@ -94,22 +94,11 @@ class BB {
 	 * @author Tanner Moushey
 	 */
 	public function custom_query_args( $args ) {
-		if ( 'tribe_events' == $args['post_type'] ) {
+		if ( in_array( 'tribe_events', (array) $args['post_type'] ) ) {
 			$args['eventDisplay'] = 'custom';
-
-			if ( empty( $arts['meta_query'] ) ) {
-				$args['meta_query'] = [];
-			}
-
-			$args['meta_query'][] = [
-				'key'     => '_EventStartDate',
-				'value'   => current_time( 'Y-m-d H:i' ),
-				'compare' => '>=',
-			];
-
+			
 			if ( 'date' == $args['orderby'] ) {
-				$args['orderby']  = '_EventStartDate';
-				$args['meta_key'] = '_EventStartDate';
+				unset( $args['orderby'] );
 			}
 		}
 
