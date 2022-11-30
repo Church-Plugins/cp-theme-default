@@ -120,7 +120,7 @@ if ( $strip_breaks ) {
 
 $photo_crop = 'landscape';
 
-if ( 'cp_staff' === $settings->post_type ) {
+if ( 'cp_staff' === get_post_type() ) {
 	$photo_crop = 'portrait';
 }
 
@@ -146,7 +146,6 @@ $callout_settings = apply_filters( 'cp_post_grid_callout_settings', [
 	"link_target"    => "_self",
 	"link_nofollow"  => "no",
 ], $settings, $module );
-
 ?>
 
 <<?php echo $module->get_posts_container(); ?> <?php $module->render_post_class(); ?><?php FLPostGridModule::print_schema( ' itemscope itemtype="' . FLPostGridModule::schema_itemtype() . '"' ); ?>>
