@@ -791,6 +791,21 @@ FLBuilder::register_module( 'FLPostGridModule', array(
 						),
 						'help'    => __( 'Optional. Choose an appropriate Heading Tag for each Post Title.', 'fl-builder' ),
 					),
+					'posts_subtitle_tag' => array(
+						'type'    => 'select',
+						'label'   => __( 'Posts Subtitle Tag', 'fl-builder' ),
+						'default' => apply_filters( 'cp_theme_post_grid_default_subtitle_tag', 'h5' ),
+						'options' => array(
+							'h1' => '&lt;h1&gt;',
+							'h2' => '&lt;h2&gt;',
+							'h3' => '&lt;h3&gt;',
+							'h4' => '&lt;h4&gt;',
+							'h5' => '&lt;h5&gt;',
+							'h6' => '&lt;h6&gt;',
+							'p' => '&lt;p&gt;',
+						),
+						'help'    => __( 'Optional. Choose an appropriate Tag for each the subtitle (when applicable).', 'fl-builder' ),
+					),
 				),
 
 			),

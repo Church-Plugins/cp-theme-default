@@ -27,13 +27,6 @@ if ( ! empty( $settings->bg_hover_color ) ) {
 	$bg_hover_grad_start = FLBuilderColor::adjust_brightness( $settings->bg_hover_color, 30, 'lighten' );
 }
 
-// Border Size
-if ( 'transparent' == $settings->style ) {
-	$border_size = $settings->border_size;
-} else {
-	$border_size = 1;
-}
-
 // Border Color
 /*if ( ! empty( $settings->bg_color ) ) {
 	$border_color = FLBuilderColor::adjust_brightness( $settings->bg_color, 12, 'darken' );
@@ -43,13 +36,10 @@ if ( ! empty( $settings->bg_hover_color ) ) {
 }
 
 ?>
-.fl-builder-content .fl-node-<?php echo $id; ?> a.fl-button,
-.fl-builder-content .fl-node-<?php echo $id; ?> a.fl-button:visited {
-
-	<?php if ( 'custom' == $settings->width ) : ?>
-	width: <?php echo $settings->custom_width; ?>px;
+.fl-builder-content .fl-node-<?php echo $id; ?> {
+	<?php if ( ! empty( $settings->button_align ) ) : ?>
+	text-align: <?php echo $settings->button_align; ?>;
 	<?php endif; ?>
-
 }
 
 <?php if ( empty( $settings->text ) ) : ?>

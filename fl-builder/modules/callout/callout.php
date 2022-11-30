@@ -90,7 +90,7 @@ class FLCalloutModule extends FLBuilderModule {
 		echo '</' . $this->settings->title_tag . '>';
 		
 		if ( ! empty( $this->settings->subtitle ) ) {
-			echo '<h5 class="fl-callout-subtitle">' . $this->settings->subtitle . '</h5>';
+			echo '<' . $this->settings->subtitle_tag . ' class="fl-callout-subtitle">' . $this->settings->subtitle . '</' . $this->settings->subtitle_tag . '>';
 		}
 		echo '</div></div>';
 	}
