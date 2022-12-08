@@ -33,14 +33,18 @@ if ( ! empty( $icon_styles ) ) {
 	$icon_styles = ' style="' . $icon_styles . '"';
 }
 
-if ( 'live_watch' == $settings->click_action ) {
+if ( 'live_watch' == $settings->click_action && function_exists( 'cp_live' ) ) {
+	$location_id = apply_filters( 'cp_live_video_location_id_default', get_query_var( 'cp_location_id' ) );
+	
 	$title = array_map( 'trim', explode( '|', $settings->text ) );
-	if ( ! Church\Live::is_location_live() ) {
+	if ( $location_id && cp_live()->integrations->cp_locations && cp_live()->integrations->cp_locations::is_location_live( $location_id ) ) {
+		$settings->text = array_shift( $title );
+	} else if ( ! $location_id && cp_live()->is_live() ) {
+		$settings->text = array_shift( $title );
+	} else {
 		$settings->link = '/' . get_post_type_object( 'cpl_item' )->rewrite['slug'] . '/';
 		$settings->text = array_pop( $title );
 		$settings->icon = false;
-	} else {
-		$settings->text = array_shift( $title );
 	}
 }
 

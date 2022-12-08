@@ -21,6 +21,16 @@ button,
 input[type="button"],
 input[type="reset"],
 input[type="submit"] {
+	--cp-button--color: var(--cp-color-ui-inverted-light);
+	--cp-button--color--hover: var(--cp-button--color);
+	--cp-button--bg: var(--cp-color-ui-secondary);
+	--cp-button--bg--hover: #19221E;
+	--cp-button--border-color: var(--cp-button--bg);
+	--cp-button--border-color--hover: var(--cp-button--bg--hover);
+	--cp-button--border-radius: var(--cp-border-radius-round); 
+	--cp-button--padding: var(--cp-ui--gap-y-x);
+	--cp-button--text-align: center;
+	
 	border: 1px solid;
 	border-color: var(--cp-button--border-color);
 	border-radius: var(--cp-button--border-radius);
