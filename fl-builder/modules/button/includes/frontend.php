@@ -34,9 +34,13 @@ if ( ! empty( $icon_styles ) ) {
 }
 
 if ( 'live_watch' == $settings->click_action && function_exists( 'cp_live' ) ) {
-	$location_id = apply_filters( 'cp_live_video_location_id_default', get_query_var( 'cp_location_id' ) );
-	
+	$location_id = false;
+
 	$title = array_map( 'trim', explode( '|', $settings->text ) );
+	if ( $use_locations = CP_Live\Admin\Settings::get_advanced( 'cp_locations_enabled', false ) ) {
+		$location_id = apply_filters( 'cp_live_video_location_id_default', get_query_var( 'cp_location_id' ) );
+	}
+	
 	if ( $location_id && cp_live()->integrations->cp_locations && cp_live()->integrations->cp_locations::is_location_live( $location_id ) ) {
 		$settings->text = array_shift( $title );
 	} else if ( ! $location_id && cp_live()->is_live() ) {
