@@ -44,6 +44,7 @@ class Custom {
 		
 		add_filter( 'cp_loc_mapbox_api_key', function() { return 'pk.eyJ1IjoibWwtY2hyaXN0cHJlcyIsImEiOiJjbDZmMnVuYXEwOGE0M2NteGc2cTdhcG1oIn0.DCNVIretmE9hMEnuB-VLQg'; } );
 		
+		add_filter( 'cp_customizer_is_active', '__return_false' );
 		add_filter( 'cp_groups_disable_archive', '__return_true' );
 		
 		add_filter( 'cp_connect_congregation_map', [ $this, 'congregation_map' ] );
@@ -70,7 +71,7 @@ class Custom {
 			}
 		} );
 		
-		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
+//		add_filter( 'cp_post_grid_callout_settings', [ $this, 'staff_email_link' ] );
 		
 		add_filter( 'post_type_link', [ $this, 'local_partner_link' ], 10, 2 );
 		
