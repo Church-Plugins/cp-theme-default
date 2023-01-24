@@ -24,13 +24,14 @@
 				}
 				
 				.fl-callout-photo a:after {
-						content: '';
-						position: absolute;
-						width: 100%;
-						height: 100%;
-						background: rgba(66, 66, 66, 0.4);
-						left: 0;
-						top: 0;
+					content: '';
+					position: absolute;
+					width: 100%;
+					height: 100%;
+					background: rgba(66, 66, 66, 0.4);
+					left: 0;
+					top: 0;
+					border-radius: 0;
 				}
 				
 				.fl-callout-title-wrap {
