@@ -88,3 +88,19 @@
         }
     }
 }
+
+:root {
+    --cp-header-below--background: var(--cp-color--primary);
+    --cp-header-below--color: var(--cp-color-text-inverted);
+}
+
+.ast-below-header-wrap {
+    background: var(--cp-header-below--background);
+    a {
+        color: var(--cp-header-below--color) !important;
+    }
+
+    svg {
+        fill: var(--cp-header-below--color) !important;
+    }
+}
