@@ -6,8 +6,10 @@
 
 .cp_location-found {
 
-	.site-header-primary-section-right .ast-builder-html-element .menu-toggle {
-		display: none !important;
+	@include media-breakpoint-down(xs) {
+		.site-header-primary-section-right .ast-builder-html-element .menu-toggle {
+			display: none !important;
+		}
 	}
 
 }
