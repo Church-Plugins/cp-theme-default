@@ -135,6 +135,11 @@ class TinyMCE {
 						'block'   => 'p',
 						'classes' => 'text-xsmall',
 					),
+					array(
+						'title'   => 'Italic (Yellowtail)',
+						'block'   => 'span',
+						'classes' => 'text-italic',
+					),
 				),
 			),
 		);
@@ -148,12 +153,12 @@ class TinyMCE {
 			"5F5B64", "Secondary",
 			"76737A", "Tertiary",
 			"A2A1A4", "Disabled",
-			"51315B", "Success",
-			"1FC2A4", "Info",
-			"CE8E2C", "Warn",
-			"F24441", "Danger",
-			"108599", "Brand Primary",
-			"F6F0ED", "Brand Secondary",
+			"008E9F", "Success",
+			"884155", "Info",
+			"986C27", "Warn",
+			"F26D63", "Danger",
+			"313E48", "Brand Primary",
+			"40403F", "Brand Secondary",
 		]';
 		
 		$settings['toolbar2'] = str_replace( 'fontsizeselect,', '', $settings['toolbar2'] );

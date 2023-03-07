@@ -1,11 +1,35 @@
-.tribe-events-event-meta {
-	width: 100% !important;
+body {
+	.uabb-new-ib {
+		cursor: default; 
+	}
+	
+	.tribe-events-single ul.tribe-related-events li .tribe-related-events-thumbnail {
+		a {
+			padding-top: 56.25%;
+		}
+		
+		img {
+			transform: translate(-50%,-50%) scale(1);
+		}
+	} 
+	
+	.fl-post-grid-image-above-title.tribe_events {
+		.fl-photo-content {
+			aspect-ratio: 16 / 9;
+			overflow: hidden;
+			display: flex;
+			align-items: center;
+		}
+		
+		.fl-callout-photo-above-title .fl-callout-text-wrap {
+			height: 0;
+			margin: 0;
+		}
+	}
 }
 
-.cp_location-none {
-	.location-show {
-		display: none;
-	}
+.cp-groups-filter--cp_group_type {
+	display: none !important;
 }
 
 .cp_location-found {
@@ -15,24 +39,46 @@
 }
 
 .cp_location-none {
+
+	.location-show {
+		display: none;
+	}
+
+//	.ast-builder-menu {
+//		display: none;
+//	}
+//
+//	.ast-mobile-popup-inner {
+//		.ast-header-html-2 .ast-header-html {
+//			border-top: none;
+//		}
+//	}
+
 	.site-footer-primary-section-1 {
 		.widget:first-child {
 			display: none;
 		}
 	}
 
-	.footer-widget-area[data-section="sidebar-widgets-footer-widget-5"] {
-		display: none !important;
-	}
+//	.footer-widget-area[data-section="sidebar-widgets-footer-widget-5"] {
+//		display: none !important;
+//	}
+} 
+
+.text-italic {
+	font-family: 'Yellowtail', handwriting;
 }
 
+.cp-group-single--type,
+.cp-group-item--type {
+	display: none;
+}
 
 .cp-not-live a[href$="/live/"] i {
 	//display: none;
 }
 
 .cp-location-header {
-	@extend %text-xlarge;
 	height: 100%;
 	display: block;
 
@@ -73,6 +119,36 @@
 	}
 }
 
+body .cploc-container--mobile {
+	.cploc-map--locations {
+
+		@include media-breakpoint-down(xs) {
+			&--location {
+				padding-left: var(--cp-gap--sm);
+				
+				.cploc-map-location--content {
+					padding-top: 0;
+				}
+				
+				.cploc-map-location--desc {
+					padding-right: var(--cp-gap--md);
+				}
+			}
+			
+			&--mode.cploc-map-mode--location {
+				.material-icons {
+					margin-right: 0;
+				}
+
+				.cploc-map--locations--mode--text {
+					display: none;
+				}
+			}
+		}
+		
+	}
+}
+
 #cploc_root {
 	.leaflet-tooltip {
 		@extend %text-em;
@@ -83,19 +159,6 @@
 	padding: var(--cp-gap--lg);
 	max-width: var(--cp-content-width);
 	margin: auto;
-}
-
-// main page menu customizations
-.cp_location-none {
-	.ast-builder-menu {
-		display: none;
-	}
-
-	.ast-mobile-popup-inner {
-		.ast-header-html-2 .ast-header-html {
-			border-top: none;
-		}
-	}
 }
 
 .cpl-pg-template {

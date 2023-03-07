@@ -127,17 +127,17 @@ class Init {
 	 */
 	public function astra_options( $options_array, $option, $default ) {
 		$options_array['font-size-h1'] = [
-			'desktop'      => '3.052',
-			'tablet'       => '3.052',
-			'mobile'       => '2.25',
+			'desktop'      => '2.625',
+			'tablet'       => '2.625',
+			'mobile'       => '1.935',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
 		];
 
 		$options_array['font-size-h2'] = [
-			'desktop'      => '2.441',
-			'tablet'       => '2.441',
+			'desktop'      => '2.4374',
+			'tablet'       => '2.4374',
 			'mobile'       => '1.8',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
@@ -145,8 +145,8 @@ class Init {
 		];
 
 		$options_array['font-size-h3'] = [
-			'desktop'      => '1.953',
-			'tablet'       => '1.953',
+			'desktop'      => '1.953125',
+			'tablet'       => '1.953125',
 			'mobile'       => '1.44',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
@@ -154,9 +154,9 @@ class Init {
 		];
 
 		$options_array['font-size-h4'] = [
-			'desktop'      => '1.563',
-			'tablet'       => '1.563',
-			'mobile'       => '1.563',
+			'desktop'      => '1.5625',
+			'tablet'       => '1.5625',
+			'mobile'       => '1.5625',
 			'desktop-unit' => 'em',
 			'tablet-unit'  => 'em',
 			'mobile-unit'  => 'em',
@@ -180,9 +180,9 @@ class Init {
 			'mobile-unit'  => 'em',
 		];
 
-		$options_array['body-font-family'] = "'Futura-PT',futura-pt,sans-serif";
-		$options_array['headings-font-family'] = "'Futura-PT',futura-pt,sans-serif";
-
+		$options_array['body-font-family'] = "Baskerville,serif";
+		$options_array['headings-font-family'] = "Montserrat,sans-serif";
+		
 		return $options_array;
 	}
 
@@ -217,8 +217,8 @@ class Init {
 		if ( isset( $wp_styles->registered['astra-theme-css'] ) ) {
 			$wp_styles->registered['astra-theme-css']->src = get_stylesheet_uri();
 		}
-
-		$this->enqueue->enqueue( 'theme', 'dynamic', [ 'in_footer' => false ] );
+		
+//		$this->enqueue->enqueue( 'theme', 'dynamic', [ 'in_footer' => false ] );
 
 	}
 

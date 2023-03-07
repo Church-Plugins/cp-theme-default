@@ -55,7 +55,7 @@ class BB {
 		add_filter( 'fl_builder_color_presets', array( $this, 'color_presets' ) );
 
 		// Add theme fonts
-		add_filter( 'fl_builder_font_families_system', array( $this, 'custom_fonts' ) );
+//		add_filter( 'fl_builder_font_families_system', array( $this, 'custom_fonts' ) );
 
 		// Remove Google fonts
 		add_filter( 'fl_builder_font_families_google', array( $this, 'no_google_fonts' ) );
@@ -202,7 +202,7 @@ class BB {
 					'700'
 				),
 			),
-			'Montserrat' => array(
+			'Lato' => array(
 				'fallback' => 'Roboto, sans-serif',
 				'weights'  => array(
 					'300',
@@ -260,15 +260,16 @@ class BB {
 			'A2A1A4',
 			
 			// ui colors
-			'108599',
-			'1D5A5c',
-			'CCD6D6',
+			'313E48',
+			'40403F',
+			'E5E8EF',
+			'EBECED',
 
 			// alert colors
-			'51315B',
-			'1FC2A4',
-			'CE8E2C',
-			'F24441',
+			'008E9F',
+			'884155',
+			'986C27',
+			'F26D63',
 		);
 	}
 

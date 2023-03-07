@@ -2,16 +2,20 @@
 
 p {
 	font-size: var(--cp-font-size);
+	line-height: 1.5;
 }
 
 %text-xlarge, .text-xlarge {
 	@extend %text-em;
-	font-size: var(--cp-font-size);
+	font-size: var(--cp-font-size--lg);
+	text-transform: uppercase;
+	letter-spacing: .08em;
 }
 
 %text-large, .text-large {
-	font-weight: 500;
-	font-size: var(--cp-font-size);
+	font-weight: var(--cp-font-weight--light);
+	font-size: var(--cp-font-size--lg);
+	line-height: 1.5;
 }
 
 %text-small, .text-small {
@@ -26,5 +30,5 @@ p {
 	text-transform: uppercase;
 	letter-spacing: .08em;
 	line-height: 1.5;
-	font-weight: 500;
+	font-weight: var(--cp-font-weight--normal);
 }
