@@ -1,0 +1,20 @@
+:root {
+	--cp-header-sticky--padding: var(--cp-gap-base);
+}
+
+body.ast-primary-sticky-header-active {
+	.site-header .main-header-bar {
+		line-height: initial;
+	}
+
+	#masthead .ast-primary-header-bar.main-header-bar {
+		padding-top: var(--cp-header-sticky--padding);
+		padding-bottom: var(--cp-header-sticky--padding);
+	}
+
+	@include media-breakpoint-down(xs) {
+		.ast-sticky-shrunk .custom-logo-link img {
+			max-height: var(--cp-font-size-h2) !important;
+		}
+	}
+}

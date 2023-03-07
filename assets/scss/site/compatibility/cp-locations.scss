@@ -1,0 +1,15 @@
+.cp_location-none {
+	.ast-below-header-wrap {
+		display: none;
+	}
+}
+
+.cp_location-found {
+
+	@include media-breakpoint-down(xs) {
+		.site-header-primary-section-right .ast-builder-html-element .menu-toggle {
+			display: none !important;
+		}
+	}
+
+}
