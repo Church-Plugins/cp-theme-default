@@ -86,8 +86,10 @@ div.fl-row.hero {
 	
 	@include media-breakpoint-down(sm) {
 		
-		.fl-module-content {
-			margin-right: 0;
+		.fl-module-photo {
+			.fl-module-content {
+				margin-right: 0;
+			}
 		}
 
 		.fl-col:first-child {
