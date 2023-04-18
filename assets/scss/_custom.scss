@@ -297,3 +297,22 @@ div.fl-row.hero {
 		}
 	}
 }
+
+body {
+	&.post-type-archive-cp_group {
+		background-color: var(--wp--preset--color--white);
+	}
+}
+.cp-groups-archive {
+	.cp-group-item {
+		border: 1px solid #F3F3F3;
+
+		&:before{
+			background: none;
+		}
+
+		.cp-group-item--type {
+			display: none;
+		}
+	}
+}
