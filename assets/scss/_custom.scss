@@ -12,7 +12,7 @@
 	.location-hide {
 		display: none;
 	}
-	
+
 	// hide subscribe dorpdown on location pages
 	&:not(.single-tribe_events) .tribe-events-c-subscribe-dropdown__container {
 		display: none !important;
@@ -37,17 +37,17 @@
 			order: 99;
 			padding-top: var(--cp-gap--sm);
 			align-self: center;
-			
+
 			@include media-breakpoint-up(sm) {
 				margin-left: auto;
 				padding-left: var(--cp-gap--md);
 				padding-top: 0;
 			}
-			
+
 			.tribe-events-c-subscribe-dropdown {
 				margin: auto;
 				display: flex;
-				
+
 				&__container,
 				&__button {
 					width: auto;
@@ -59,33 +59,33 @@
 
 // styles for the hero row
 div.fl-row.hero {
-	
+
 	.fl-photo-content {
 		width: 100%;
 	}
-	
+
 	@include media-breakpoint-up(sm) {
 		.fl-col:first-child {
 			.fl-module-content {
 				margin-right: 1em;
 			}
 		}
-		
+
 		.fl-col:last-child {
 			.fl-module-content {
 				margin-right: -10rem;
 			}
-			
+
 			img {
 				border-top-right-radius: 0;
 				border-bottom-right-radius: 0;
 			}
 		}
-		
+
 	}
-	
+
 	@include media-breakpoint-down(sm) {
-		
+
 		.fl-module-photo {
 			.fl-module-content {
 				margin-right: 0;
@@ -97,23 +97,23 @@ div.fl-row.hero {
 				padding-bottom: 0;
 			}
 		}
-		
+
 		.fl-col:last-child {
 			img {
 				border-radius: 0;
 			}
-		}		
-		
+		}
+
 		> .fl-row-content-wrap {
 			padding-bottom: 4em;
 		}
-		
+
 		.fl-col-group {
 			display: flex;
 			flex-direction: column-reverse;
 		}
 	}
-	
+
 }
 
 
@@ -313,6 +313,24 @@ body {
 
 		.cp-group-item--type {
 			display: none;
+		}
+
+		&--locations {
+			.cp-button {
+				--cp-button--color: currentColor;
+				--cp-button--color--hover: var(--cp-color-text-link);
+				--cp-button--bg: transparent;
+				--cp-button--bg--hover: transparent;
+				--cp-button--border-color: transparent;
+				--cp-button--border-color--hover: var(--cp-button--border-color);
+				--cp-button--border-radius: var(--cp-border-radius-sm);
+				--cp-button--padding: 0;
+
+				&[href*="location_191"]:after {
+					content: '| Parish';
+					margin-left: .25em;
+				}
+			}
 		}
 	}
 }
