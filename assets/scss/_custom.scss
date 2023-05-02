@@ -314,22 +314,25 @@ body {
 		.cp-group-item--type {
 			display: none;
 		}
+	}
+}
 
-		&--locations {
-			.cp-button {
-				--cp-button--color: currentColor;
-				--cp-button--color--hover: var(--cp-color-text-link);
-				--cp-button--bg: transparent;
-				--cp-button--bg--hover: transparent;
-				--cp-button--border-color: transparent;
-				--cp-button--border-color--hover: var(--cp-button--border-color);
-				--cp-button--border-radius: var(--cp-border-radius-sm);
-				--cp-button--padding: 0;
+body .cp-group-item,
+body .cp-group-single {
+	&--locations {
+		.cp-button {
+			--cp-button--color: currentColor;
+			--cp-button--color--hover: var(--cp-color-text-link);
+			--cp-button--bg: transparent;
+			--cp-button--bg--hover: transparent;
+			--cp-button--border-color: transparent;
+			--cp-button--border-color--hover: var(--cp-button--border-color);
+			--cp-button--border-radius: var(--cp-border-radius-sm);
+			--cp-button--padding: 0;
 
-				&[href*="location_191"]:after {
-					content: '| Parish';
-					margin-left: .25em;
-				}
+			&[href*="location_191"]:after {
+				content: '| Parish';
+				margin-left: .25em;
 			}
 		}
 	}
