@@ -329,11 +329,10 @@ body .cp-group-single {
 			--cp-button--border-color--hover: var(--cp-button--border-color);
 			--cp-button--border-radius: var(--cp-border-radius-sm);
 			--cp-button--padding: 0;
-
-			&[href*="location_191"]:after {
-				content: '| Parish';
-				margin-left: .25em;
-			}
 		}
 	}
+}
+
+body:not(.cp_location-191) .cp-groups-filter .cp-groups-filter--cp_group_parish {
+	display: none;
 }
