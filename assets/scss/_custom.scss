@@ -336,3 +336,11 @@ body .cp-group-single {
 body:not(.cp_location-191) .cp-groups-filter .cp-groups-filter--cp_group_parish {
 	display: none;
 }
+
+// Music Row
+body.cp_location-191 {
+	.cp-groups-filter--cp_group_category,
+	.cp-groups-filter--cp_group_life_stage {
+		display: none;
+	}
+}
