@@ -343,10 +343,10 @@ body:not(.cp_location-191) .cp-groups-filter .cp-groups-filter--cp_group_parish 
 body.cp_location-191 {
 	.cp-groups-filter--cp_group_category,
 	.cp-groups-filter--cp_group_life_stage,
+	.cp-group-item--life-stage,
 	.cp-group-item--category,
-	.cp-group-item--type,
-	.cp-group-single--category,
-	.cp-group-single--type {
+	.cp-group-single--life-stage,
+	.cp-group-single--category {
 		display: none;
 	}
 }
