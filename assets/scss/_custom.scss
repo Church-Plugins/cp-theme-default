@@ -303,16 +303,18 @@ body {
 		background-color: var(--wp--preset--color--white);
 	}
 }
+
+.cp-group-item--type,
+.cp-group-single--type {
+	display: none;
+}
+
 .cp-groups-archive {
 	.cp-group-item {
 		border: 1px solid #F3F3F3;
 
 		&:before{
 			background: none;
-		}
-
-		.cp-group-item--type {
-			display: none;
 		}
 	}
 }
@@ -340,7 +342,11 @@ body:not(.cp_location-191) .cp-groups-filter .cp-groups-filter--cp_group_parish 
 // Music Row
 body.cp_location-191 {
 	.cp-groups-filter--cp_group_category,
-	.cp-groups-filter--cp_group_life_stage {
+	.cp-groups-filter--cp_group_life_stage,
+	.cp-group-item--life-stage,
+	.cp-group-item--type,
+	.cp-group-single--life-stage,
+	.cp-group-single--type {
 		display: none;
 	}
 }

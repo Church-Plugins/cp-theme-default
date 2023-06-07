@@ -37,7 +37,7 @@ $parishes = get_the_terms( get_the_ID(), 'cp_group_parish' );
 		<?php if ( ! empty( $item['types'] ) || ! empty( $item['categories'] ) || ! empty( $item['lifeStages'] ) ) : // for mobile ?>
 			<div class="cp-group-single--categories">
 				<?php if ( ! empty( $item['categories'] ) ) : ?>
-					<div class="cp-group-single--type">
+					<div class="cp-group-single--category">
 						<?php foreach( $item['categories'] as $slug => $label ) : ?>
 							<a class="cp-button is-xsmall" href="<?php echo Templates::get_facet_link( $slug, 'cp_group_category' ); ?>"><?php echo $label; ?></a>
 						<?php endforeach; ?>
@@ -79,6 +79,20 @@ $parishes = get_the_terms( get_the_ID(), 'cp_group_parish' );
 		</div>
 
 		<div class="cp-group-single--content"><?php echo wp_kses_post( $item['desc'] ); ?></div>
+
+		<div class="cp-group-item--attributes">
+			<?php if ( $item['handicap'] ) : ?>
+				<span class="cp-group-item--attributes--accessible"><?php echo Helpers::get_icon( 'accessible' ); ?> <?php _e( 'Accessible', 'cp-groups' ); ?></span>
+			<?php endif; ?>
+
+			<?php if ( $item['kidFriendly'] ) : ?>
+				<span class="cp-group-item--attributes--kid-friendly"><?php echo Helpers::get_icon( 'child' ); ?> <?php _e( 'Kid Friendly', 'cp-groups' ); ?></span>
+			<?php endif; ?>
+
+			<?php if ( $item['isFull'] ) : ?>
+				<span class="cp-group-item--attributes--is-full"><?php echo Helpers::get_icon( 'report' ); ?> <?php _e( 'Full', 'cp-groups' ); ?></span>
+			<?php endif; ?>
+		</div>
 
 		<?php if ( $public_url = get_post_meta( $item['id'], 'public_url', true ) ) : ?>
 			<div class="cp-group-single--registration-url"><a href="<?php echo esc_url( $public_url ); ?>" class="cp-button is-large" target="_blank"><?php _e( 'View Details', 'cp-groups' ); ?></a></div>
