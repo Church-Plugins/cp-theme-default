@@ -1,5 +1,6 @@
 <?php
 use ChurchPlugins\Helpers;
+use CP_Groups\Admin\Settings;
 use CP_Groups\Templates;
 
 try {
@@ -97,7 +98,26 @@ $parishes = get_the_terms( get_the_ID(), 'cp_group_parish' );
 	</div>
 
 	<div style="display:none;">
-		<?php Templates::get_template_part( "parts/group-modal" ); ?>
+		<?php
+			Templates::get_template_part( "parts/group-modal" );
+
+			if( Settings::get_advanced( 'contact_action', 'action' ) == 'form' ) {
+				$leader_email = get_post_meta( $item['id'], 'leader_email', true );
+				$group_leader = get_post_meta( $item['id'], 'leader', true );
+
+				if( is_email( $leader_email ) ) {
+					cp_groups()->build_email_modal( 'action_contact', $leader_email, $group_leader );
+				}
+			}
+
+			if( Settings::get_advanced( 'hide_registration', 'off' ) == 'off' ) {
+				$register_url = get_post_meta( $item['id'], 'registration_url', true );
+
+				if( is_email( $register_url ) ) {
+					cp_groups()->build_email_modal( 'action_register', $register_url, $item['title'] );
+				}
+			}
+		?>
 	</div>
 
 

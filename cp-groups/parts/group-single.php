@@ -1,6 +1,8 @@
 <?php
 use ChurchPlugins\Helpers;
 use CP_Groups\Templates;
+use CP_Groups\Admin\Settings;
+
 try {
 	$item = new \CP_Groups\Controllers\Group( get_the_ID() );
 	$item = $item->get_api_data();
@@ -94,13 +96,19 @@ $parishes = get_the_terms( get_the_ID(), 'cp_group_parish' );
 			<?php endif; ?>
 		</div>
 
-		<?php if ( $public_url = get_post_meta( $item['id'], 'public_url', true ) ) : ?>
-			<div class="cp-group-single--registration-url"><a href="<?php echo esc_url( $public_url ); ?>" class="cp-button is-large" target="_blank"><?php _e( 'View Details', 'cp-groups' ); ?></a></div>
-		<?php endif; ?>
+		<div class="cp-group-single--actions">
+			<?php if ( Settings::get_advanced( 'hide_details' ) !== 'on' && $public_url = get_post_meta( $item['id'], 'public_url', true ) ) : ?>
+				<div class="cp-group-single--registration-url"><a href="<?php echo esc_url( $public_url ); ?>" class="cp-button is-large" target="_blank"><?php _e( 'View Details', 'cp-groups' ); ?></a></div>
+			<?php endif; ?>
 
-		<?php if ( $registration_url = get_post_meta( $item['id'], 'registration_url', true ) ) : ?>
-			<div class="cp-group-single--registration-url"><a href="<?php echo esc_url( $registration_url ); ?>" class="cp-button is-large" target="_blank"><?php _e( 'Register Now', 'cp-groups' ); ?></a></div>
-		<?php endif; ?>
+			<?php if ( $item['registration_url'] && Settings::get_advanced( 'hide_registration' ) !== 'on' ) : ?>
+				<div class="cp-group-single--registration-url"><a href="<?php echo str_contains( $item['registration_url'], 'mailto' ) ? '#' : esc_url( $item['registration_url'] ); ?>" class="cp-button" target="_blank"><?php _e( 'Register Now', 'cp-groups' ); ?></a></div>
+			<?php endif; ?>
+
+			<?php if ( $item['contact_url'] && Settings::get_advanced( 'contact_action' ) !== 'hide' ) : ?>
+				<div class="cp-group-single--contact-url"><a href="<?php echo str_contains( $item['contact_url'], 'mailto' ) ? '#' : esc_url( $item['contact_url'] ); ?>" class="cp-button is-light" target="_blank"><?php _e( 'Contact', 'cp-groups' ); ?></a></div>
+			<?php endif; ?>
+		</div>
 
 		<?php do_action( 'cp_group_single_after_content', $item ); ?>
 	</div>
