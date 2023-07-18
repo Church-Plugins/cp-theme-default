@@ -84,6 +84,7 @@
   { "term" : "God's Wrath", "weight" : 4 },
   { "term" : "Gospel", "weight" : 6 },
   { "term" : "Gossip", "weight" : 3 },
+  { "term" : "Good Works", "weight" : 3 },
   { "term" : "Grace", "weight" : 10 },
   { "term" : "Greed", "weight" : 3 },
   { "term" : "Grief", "weight" : 6 },
@@ -225,5 +226,5 @@
   { "term" : "World Religions", "weight" : 4 },
   { "term" : "Worry", "weight" : 3 },
   { "term" : "Worship", "weight" : 9 }
-  
+
 ]
