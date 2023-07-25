@@ -47,6 +47,7 @@ class Shortcodes {
 	protected function actions() {
 		add_shortcode( 'cp-location-header', [ $this, 'location_header_cb' ] );
 		add_shortcode( 'cp-location-dropdown', [ $this, 'location_dropdown_cb' ] );
+		add_shortcode( 'cp-paylocity-positions', [ $this, 'paylocity_positions' ] );
 	}
 
 	/** Actions **************************************/
@@ -144,4 +145,102 @@ class Shortcodes {
 		return ob_get_clean();
 	}
 	
+	public function paylocity_positions( ) {
+		$api_key = 'c820b098-d595-489a-9e33-b30120132b5b';
+		$base_url = 'https://recruiting.paylocity.com/recruiting/v2/api/feed/jobs/';
+
+		$custom_logo_id = get_theme_mod( 'custom_logo' );
+    $image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+		$image = $image[0];
+		$error = null;
+
+		$res = @file_get_contents( $base_url . $api_key );
+
+		if( ! $res ) {
+			$error = esc_html__( 'Unable to load positions', 'cp-theme-default' );
+		}
+
+		try {
+			$data = json_decode( $res );
+		}
+		catch(Exception $err) {
+			$error = esc_html__( 'There was a problem loading data', 'cp-theme-default' );
+		}
+
+		ob_start(); ?>
+		
+		<div class="cp-paylocity-positions">
+			<div class="cp-paylocity-logo-wrapper">
+				<img class="cp-paylocity-logo" src="<?php echo $image ?>">
+			</div>
+
+			<div id='cp-paylocity-positions'>
+				<?php if( $error ) {
+					echo esc_html( $error );
+				} ?>
+			</div>
+
+			<script>	
+				jQuery(($) => {
+					const data = <?php echo $res ? json_encode( $data ) : 'null' ?>;
+					const content = $('#cp-paylocity-positions')
+
+					if(data) {
+						displayList()
+					}
+
+					function displayPosition(id) {
+						const position = data.jobs.find(job => job.jobId === id)
+						content.html('')
+						const $item = $(`<div class="cp-paylocity-position-details"></div>`);
+						$header = $(`<div class="cp-paylocity-position-header"></div>`)
+						$header.append(`<div>
+							<h3>${position.title}</h3>
+							<div>${position.jobLocation.locationDisplayName} / ${position.hiringDepartment}</div>
+						</div>`)
+						$applyBtn = $(`<a class="cp-button" target="_blank" href="${position.applyUrl}"><?php esc_html_e( 'Apply', 'cp-theme-default' ) ?></a>`)
+						$header.append($applyBtn)
+						$item.append($header)
+						$item.append(`<p>${position.description}</p>`)
+						$backBtn = $(`<button class="cp-button is-text cp-paylocity-back-btn"><span class="material-icons">arrow_back_ios</span><?php esc_html_e( 'View All Jobs', 'cp-theme-default' ) ?></button>`);
+						$backBtn.on('click', displayList)
+						$item.append($backBtn)
+						content.append($item)
+					}
+
+					function displayList() {
+						content.html('')
+						data.jobs.forEach(position => {
+							const date = new Date(position.publishedDate)
+							const formattedDate = getFormattedDate(date)
+							const $item = $(`<div class="cp-paylocity-position">
+								<div>
+									<h5 class="cp-paylocity-position--title">${position.title}</h5>
+									<div>${formattedDate} - ${position.hiringDepartment}</div>
+								</div>
+								<div class="cp-paylocity-position--location">${position.jobLocation.locationDisplayName}</div>
+							</div>`);
+							$item.on('click', () => {
+								displayPosition(position.jobId)
+							})
+							content.append($item)
+						})
+					}
+
+					function getFormattedDate(date) {
+							let year = date.getFullYear();
+							let month = (1 + date.getMonth()).toString().padStart(2, '0');
+							let day = date.getDate().toString().padStart(2, '0');
+						
+							return month + '/' + day + '/' + year;
+					}
+				})
+			</script>
+
+
+		</div>
+
+		<?php
+		return ob_get_clean();
+	}
 }

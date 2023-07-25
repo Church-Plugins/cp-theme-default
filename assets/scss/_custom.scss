@@ -350,3 +350,47 @@ body.cp_location-191 {
 		display: none;
 	}
 }
+
+.cp-paylocity-positions {
+	background: white;
+	padding: var(--cp-gap--lg);
+}
+
+.cp-paylocity-logo-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-bottom: var(--cp-gap--lg);
+	.cp-paylocity-logo {
+		max-width: min(300px, 100%);
+	}
+}
+
+.cp-paylocity-position-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	padding: var(--cp-gap--md) 0;
+	border-bottom: 1px solid black;
+}
+
+.cp-paylocity-position {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--cp-gap--sm);
+	cursor: pointer;
+	border-bottom: 1px solid black;
+	padding: var(--cp-gap--sm) 0;
+	font-size: var(--cp-font-size--sm);
+	.cp-paylocity-position--title {
+		color: var(--cp-color-text-link) !important;
+		margin-bottom: 0;
+	}
+	.cp-paylocity-position--location {
+		min-width: max-content;
+	}
+}
+
+.cp-paylocity-back-btn {
+	text-align: center;
+}
