@@ -39,3 +39,25 @@ function child_enqueue_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+
+
+/**
+ * Adds the MP Event ID to the URL so that MP Widgets can access the event ID
+ */
+function cp_add_ministry_platform_event_id() {
+	if( is_singular( 'tribe_events' ) ) {
+		if( isset( $_GET['id'] ) ) {
+			return;
+		}
+
+		$event_id = \Tribe__Events__Main::postIdHelper( get_the_ID() );
+		$mpp_event_id = get_post_meta( $event_id, '_chms_id', true );
+
+		if( $mpp_event_id ) {
+			wp_redirect( add_query_arg( 'id', $mpp_event_id, get_the_permalink() ), 302 );
+			exit;
+		}
+	}
+}
+
+add_action( 'template_redirect', 'cp_add_ministry_platform_event_id' );
