@@ -80,14 +80,14 @@ $title = apply_filters( 'tribe_events_single_event_title_html', the_title( $befo
 		<a href="<?php echo esc_url( tribe_get_events_link() ); ?>"> <?php printf( '&laquo; ' . esc_html_x( 'All %s', '%s Events plural label', 'the-events-calendar' ), $events_label_plural ); ?></a>
 	</p>
 
-	<script id="MPWidgets" src="https://my.northway.org/widgets/dist/MPWidgets.js"></script>
-
 	<script>
 		window.addEventListener('load', () => {
 			const elem = document.querySelector('mpp-event-details').shadowRoot
 
 			if(!elem) return
 
+			// Watches for changes in the Widget HTML
+			// We only want the registration form, so we remove everything else
 			const observer = new MutationObserver((mutations, observer) => {
 				const container = elem.querySelector('#detailsContainer')
 				if(container) {
@@ -98,7 +98,7 @@ $title = apply_filters( 'tribe_events_single_event_title_html', the_title( $befo
 			
 			observer.observe(elem.firstChild, { childList: true });
 
-			// backup option, add a stylesheet that hides details
+			// backup option, add a stylesheet that hides details if the observer fails
 			const style = document.createElement( 'style' )
 
 			style.innerHTML = `

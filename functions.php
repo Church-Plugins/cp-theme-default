@@ -42,7 +42,9 @@ add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
 
 
 /**
- * Adds the MP Event ID to the URL so that MP Widgets can access the event ID
+ * Ministry Platform widgets receives the event ID from the URL.
+ * When visiting an event page, if the event has a _chms_id custom field,
+ * the user will be 'redirected' to the same page with a URL parameter added.
  */
 function cp_add_ministry_platform_event_id() {
 	if( is_singular( 'tribe_events' ) ) {
