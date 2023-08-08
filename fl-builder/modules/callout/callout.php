@@ -155,6 +155,10 @@ class FLCalloutModule extends FLBuilderModule {
 	 * @method render_image
 	 */
 	public function render_image( $position ) {
+		if( isset( $this->settings->hide_photo ) && $this->settings->hide_photo ) {
+			return '';
+		}
+
 		if ( 'photo' == $this->settings->image_type && $this->settings->photo_position == $position ) {
 
 			if ( empty( $this->settings->photo ) ) {
