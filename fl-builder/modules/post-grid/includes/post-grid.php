@@ -142,6 +142,7 @@ $callout_settings = apply_filters( 'cp_post_grid_callout_settings', [
 	"photo_crop"     => apply_filters( 'cp_post_grid_photo_crop', $photo_crop, $settings, $module ),
 	"photo_position" => $position,
 	"photo_size"     => "cover",
+	"hide_photo"     => ! $settings->show_image,
 	"link"           => get_the_permalink(),
 	"link_target"    => "_self",
 	"link_nofollow"  => "no",
