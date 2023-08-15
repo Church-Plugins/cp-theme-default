@@ -20,6 +20,7 @@ function cp() {
     return Church\Init::get_instance();
 }
 cp();
+
 /**
  * Define Constants
  */
@@ -59,7 +60,6 @@ function child_enqueue_scripts() {
 
 	wp_enqueue_script( 'mp-auth' );
 }
-
 add_action( 'wp_enqueue_scripts', 'child_enqueue_scripts' );
 
 
@@ -94,9 +94,7 @@ function child_custom_script_attributes( $tag, $handle, $src ) {
 
 	return '<script id="MPWidgets" src="' . esc_url( $src ) . '"></script>';
 }
-
 add_action( 'script_loader_tag', 'child_custom_script_attributes', 10, 3 );
-
 
 /**
  * Ministry Platform widgets receives the event ID from the URL.
@@ -120,6 +118,3 @@ function cp_add_ministry_platform_event_id() {
 }
 
 add_action( 'template_redirect', 'cp_add_ministry_platform_event_id' );
-
-
-
