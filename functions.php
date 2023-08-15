@@ -88,7 +88,7 @@ function cp_get_permalink_from_slug( $slug ) {
  * Changes the MPWidgets script tag ID so that it can be targeted by MPWidgets
  */
 function child_custom_script_attributes( $tag, $handle, $src ) {
-	if ( 'MPWidgets' !== $handle ) {
+	if ( 'mp-widgets' !== $handle ) {
 		return $tag;
 	}
 
