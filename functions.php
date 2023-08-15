@@ -20,6 +20,7 @@ function cp() {
     return Church\Init::get_instance();
 }
 cp();
+
 /**
  * Define Constants
  */
@@ -29,17 +30,71 @@ define( 'CHILD_THEME_CHURCH_PLUGINS_DEFAULT_THEME_VERSION', '1.0.0' );
  * Enqueue styles
  */
 function child_enqueue_styles() {
-
 	wp_enqueue_style( 'church-plugins-default-theme-theme-css', get_stylesheet_directory_uri() . '/style.css', array('astra-theme-css'), CHILD_THEME_CHURCH_PLUGINS_DEFAULT_THEME_VERSION, 'all' );
-    wp_enqueue_style( 'leafletcss', get_stylesheet_directory_uri() . '/assets/css/leaflet.css', array(), CHILD_THEME_CHURCH_PLUGINS_DEFAULT_THEME_VERSION, 'all' );
-
-    wp_enqueue_script( 'leafletjs', get_stylesheet_directory_uri() . '/assets/js/leaflet.js', array(), CHILD_THEME_CHURCH_PLUGINS_DEFAULT_THEME_VERSION, 'all' );
-
-
+	wp_enqueue_style( 'leafletcss', get_stylesheet_directory_uri() . '/assets/css/leaflet.css', array(), CHILD_THEME_CHURCH_PLUGINS_DEFAULT_THEME_VERSION, 'all' );
+	wp_enqueue_script( 'leafletjs', get_stylesheet_directory_uri() . '/assets/js/leaflet.js', array(), CHILD_THEME_CHURCH_PLUGINS_DEFAULT_THEME_VERSION, 'all' );
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
 
+
+function child_enqueue_scripts() {
+	wp_enqueue_script( 'mp-widgets', 'https://my.northway.org/widgets/dist/MPWidgets.js' );
+
+	wp_register_script( 'mp-auth', get_stylesheet_directory_uri() . '/assets/js/mp-auth.js', array( 'jquery' ) );
+
+	wp_localize_script( 'mp-auth', 'mpAuth', array(
+		'loggedInMenu' => array(
+			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),      'url' => cp_get_permalink_from_slug( 'about' ) ),
+			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ),    'url' => cp_get_permalink_from_slug( 'contact' ) ),
+			array( 'text' => esc_html__( 'My Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
+			array( 'text' => esc_html__( 'Log Out', 'cp-theme-default' ),    'url' => wp_logout_url() ),
+		),
+		'loggedOutMenu' => array(
+			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),          'url' => cp_get_permalink_from_slug( 'about' ) ),
+			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ),        'url' => cp_get_permalink_from_slug( 'contact' ) ),
+			array( 'text' => esc_html__( 'Create Account', 'cp-theme-default' ), 'url' => site_url( '/wp-login.php?action=register' ) ),
+			array( 'text' => esc_html__( 'Log In', 'cp-theme-default' ),         'url' => wp_login_url() ),
+		)
+	) );
+
+	wp_enqueue_script( 'mp-auth' );
+}
+add_action( 'wp_enqueue_scripts', 'child_enqueue_scripts' );
+
+
+
+function cp_auth_menu_shortcode() {
+	return '<ul class="mp-auth-menu"></ul>';
+}
+
+add_shortcode( 'mp_auth_menu', 'cp_auth_menu_shortcode' );
+
+
+/**
+ * Get a page permalink from slug
+ */
+function cp_get_permalink_from_slug( $slug ) {
+	$page = get_page_by_path( $slug );
+
+	if( $page ) {
+		return esc_url( get_permalink( $page->ID ) );
+	}
+
+	return '/' . $slug;
+}
+
+/**
+ * Changes the MPWidgets script tag ID so that it can be targeted by MPWidgets
+ */
+function child_custom_script_attributes( $tag, $handle, $src ) {
+	if ( 'mp-widgets' !== $handle ) {
+		return $tag;
+	}
+
+	return '<script id="MPWidgets" src="' . esc_url( $src ) . '"></script>';
+}
+add_action( 'script_loader_tag', 'child_custom_script_attributes', 10, 3 );
 
 /**
  * Ministry Platform widgets receives the event ID from the URL.

@@ -1,0 +1,34 @@
+
+// console.log(mpAuth)
+
+jQuery($ => {
+	const menu = $('.mp-auth-menu')
+
+	const appRoot = sessionStorage.getItem('appRoot')
+
+	fetch( `${appRoot}/Api/Auth/User`, {
+		headers: {
+			"Authorization": `Bearer ${localStorage.getItem('mpp-widgets_AuthToken')}`,
+		}
+	} )
+	.then(res => {
+		createMenu(res.status === 200)
+	})
+	.catch(() => {
+		createMenu(false)
+	})
+
+	function createMenu(loggedIn = false) {
+		const items = loggedIn ? mpAuth.loggedInMenu : mpAuth.loggedOutMenu
+		
+		items.forEach(item => {
+			const li = $('<li>')
+			const a = $('<a>')
+			a.attr('class', 'mp-auth-link')
+			a.attr('href', item.url)
+			a.text(item.text)
+			li.append(a)
+			menu.append(li)
+		})
+	}
+})
