@@ -92,7 +92,7 @@ function child_custom_script_attributes( $tag, $handle, $src ) {
 		return $tag;
 	}
 
-	return '<script id="MPWidgets" src="' . esc_url( $src ) . '></script>';
+	return '<script id="MPWidgets" src="' . esc_url( $src ) . '"></script>';
 }
 
 add_action( 'script_loader_tag', 'child_custom_script_attributes', 10, 3 );
