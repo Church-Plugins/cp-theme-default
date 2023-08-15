@@ -6,14 +6,13 @@ jQuery($ => {
 
 	const appRoot = sessionStorage.getItem('appRoot')
 
-	fetch( `${appRoot}/Api/Auth/User` )
+	fetch( `${appRoot}/Api/Auth/User`, {
+		headers: {
+			"Authorization": `Bearer ${localStorage.getItem('mpp-widgets_AuthToken')}`,
+		}
+	} )
 	.then(res => {
-		if(res.status === 200 || res.status === 204) {
-			createMenu(true)
-		}
-		else {
-			createMenu(false)
-		}
+		createMenu(res.status === 200)
 	})
 	.catch(() => {
 		createMenu(false)
