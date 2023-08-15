@@ -65,7 +65,7 @@ add_action( 'wp_enqueue_scripts', 'child_enqueue_scripts' );
 
 
 function cp_auth_menu_shortcode() {
-	return '<div class="mp-auth-menu"></div>';
+	return '<ul class="mp-auth-menu"></ul>';
 }
 
 add_shortcode( 'mp_auth_menu', 'cp_auth_menu_shortcode' );

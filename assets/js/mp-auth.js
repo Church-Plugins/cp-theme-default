@@ -25,6 +25,7 @@ jQuery($ => {
 		items.forEach(item => {
 			const li = $('<li>')
 			const a = $('<a>')
+			a.attr('class', 'mp-auth-link')
 			a.attr('href', item.url)
 			a.text(item.text)
 			li.append(a)
