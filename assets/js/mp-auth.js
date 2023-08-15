@@ -25,7 +25,7 @@ jQuery($ => {
 		items.forEach(item => {
 			const li = $('<li>')
 			const a = $('<a>')
-			a.attr('href', item.href)
+			a.attr('href', item.url)
 			a.text(item.text)
 			li.append(a)
 			menu.append(li)
