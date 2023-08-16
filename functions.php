@@ -39,3 +39,15 @@ function child_enqueue_styles() {
 }
 
 add_action( 'wp_enqueue_scripts', 'child_enqueue_styles', 15 );
+
+
+function cp_register_account_widget_area() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Account Sidebar', 'cp-theme-default' ),
+		'id'            => 'sidebar-account',
+		'description'   => esc_html__( 'Add widgets here.', 'cp-theme-default' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+	) );
+}
+add_action( 'widgets_init', 'cp_register_account_widget_area' );
