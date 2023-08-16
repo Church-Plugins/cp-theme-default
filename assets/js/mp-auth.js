@@ -31,4 +31,17 @@ jQuery($ => {
 			menu.append(li)
 		})
 	}
-})
+});
+
+// check if on the /account page with the ?action=logout query string
+// if so, remove any auth tokens from local storage
+(function() {
+	if(window.location.pathname !== '/account') return
+
+	const urlParams = new URLSearchParams(window.location.search)
+	if (urlParams.get('action') === 'logout') {
+		localStorage.removeItem('mpp-widgets_AuthToken')
+		localStorage.removeItem('mpp-widgets-IdToken')
+		localStorage.removeItem('mpp-widgets-ExpiresAfter')
+	}
+})();
