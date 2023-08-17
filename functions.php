@@ -45,16 +45,16 @@ function child_enqueue_scripts() {
 
 	wp_localize_script( 'mp-auth', 'mpAuth', array(
 		'loggedInMenu' => array(
-			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),      'url' => cp_get_permalink_from_slug( 'about' ) ),
-			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ),    'url' => cp_get_permalink_from_slug( 'contact' ) ),
-			array( 'text' => esc_html__( 'My Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
-			array( 'text' => esc_html__( 'Log Out', 'cp-theme-default' ),    'url' => wp_logout_url() ),
+			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),   'url' => cp_get_permalink_from_slug( 'about' ) ),
+			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'contact' ) ),
+			array( 'text' => esc_html__( 'Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
+			array( 'text' => esc_html__( 'Log Out', 'cp-theme-default' ), 'url' => add_query_arg( 'action', 'logout', cp_get_permalink_from_slug( 'account' ) ) ),
 		),
 		'loggedOutMenu' => array(
-			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),          'url' => cp_get_permalink_from_slug( 'about' ) ),
-			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ),        'url' => cp_get_permalink_from_slug( 'contact' ) ),
-			array( 'text' => esc_html__( 'Create Account', 'cp-theme-default' ), 'url' => site_url( '/wp-login.php?action=register' ) ),
-			array( 'text' => esc_html__( 'Log In', 'cp-theme-default' ),         'url' => wp_login_url() ),
+			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),   'url' => cp_get_permalink_from_slug( 'about' ) ),
+			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'contact' ) ),
+			array( 'text' => esc_html__( 'Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
+			array( 'text' => esc_html__( 'Log In', 'cp-theme-default' ),  'login' => true ),
 		)
 	) );
 
@@ -116,5 +116,15 @@ function cp_add_ministry_platform_event_id() {
 		}
 	}
 }
-
 add_action( 'template_redirect', 'cp_add_ministry_platform_event_id' );
+
+function cp_register_account_widget_area() {
+	register_sidebar( array(
+		'name'          => esc_html__( 'Account Sidebar', 'cp-theme-default' ),
+		'id'            => 'sidebar-account',
+		'description'   => esc_html__( 'Add widgets here.', 'cp-theme-default' ),
+		'before_widget' => '<section id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</section>',
+	) );
+}
+add_action( 'widgets_init', 'cp_register_account_widget_area' );
