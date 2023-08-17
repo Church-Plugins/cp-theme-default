@@ -249,6 +249,10 @@ body .cploc-container--mobile {
 		& > li:nth-child(-n + 2) {
 			display: none;
 		}
+
+		& > li:nth-child(3)::before {
+			display: none;
+		}
 	}
 }
 
