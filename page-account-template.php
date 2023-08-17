@@ -17,7 +17,7 @@ get_header(); ?>
 
 <?php endif ?>
 
-	<div id="primary" <?php astra_primary_class(); ?>>
+	<div id="primary" <?php astra_primary_class('cp-account-primary'); ?>>
 
 		<?php astra_primary_content_top(); ?>
 

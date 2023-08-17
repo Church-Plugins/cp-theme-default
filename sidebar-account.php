@@ -11,12 +11,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $astra_sidebar = 'sidebar-account';
 
+$classes = array_merge(
+	astra_get_secondary_class(),
+	array(
+		'cp-account-sidebar'
+	)
+);
+
 echo '<div ';
 	echo astra_attr(
 		'sidebar',
 		array(
 			'id'    => 'secondary',
-			'class' => join( ' ', astra_get_secondary_class() ),
+			'class' => join( ' ', $classes ),
 		)
 	);
 	echo '>';

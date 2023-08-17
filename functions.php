@@ -45,16 +45,16 @@ function child_enqueue_scripts() {
 
 	wp_localize_script( 'mp-auth', 'mpAuth', array(
 		'loggedInMenu' => array(
-			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),      'url' => cp_get_permalink_from_slug( 'about' ) ),
-			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ),    'url' => cp_get_permalink_from_slug( 'contact' ) ),
-			array( 'text' => esc_html__( 'My Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
-			array( 'text' => esc_html__( 'Log Out', 'cp-theme-default' ),    'url' => wp_logout_url() ),
+			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),   'url' => cp_get_permalink_from_slug( 'about' ) ),
+			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'contact' ) ),
+			array( 'text' => esc_html__( 'Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
+			array( 'text' => esc_html__( 'Log Out', 'cp-theme-default' ), 'url' => add_query_arg( 'action', 'logout', cp_get_permalink_from_slug( 'account' ) ) ),
 		),
 		'loggedOutMenu' => array(
-			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),          'url' => cp_get_permalink_from_slug( 'about' ) ),
-			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ),        'url' => cp_get_permalink_from_slug( 'contact' ) ),
-			array( 'text' => esc_html__( 'Create Account', 'cp-theme-default' ), 'url' => site_url( '/wp-login.php?action=register' ) ),
-			array( 'text' => esc_html__( 'Log In', 'cp-theme-default' ),         'url' => wp_login_url() ),
+			array( 'text' => esc_html__( 'About', 'cp-theme-default' ),   'url' => cp_get_permalink_from_slug( 'about' ) ),
+			array( 'text' => esc_html__( 'Contact', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'contact' ) ),
+			array( 'text' => esc_html__( 'Account', 'cp-theme-default' ), 'url' => cp_get_permalink_from_slug( 'account' ) ),
+			array( 'text' => esc_html__( 'Log In', 'cp-theme-default' ),  'login' => true ),
 		)
 	) );
 
