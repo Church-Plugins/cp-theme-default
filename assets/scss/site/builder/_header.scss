@@ -430,6 +430,11 @@
 	}
 }
 
+.cp-location-dropdown .cp-button {
+	padding-top: var(--cp-gap-base);
+	padding-bottom: var(--cp-gap-base);
+}
+
 /* Footer menu spacing between each menu items. */
 @media (min-width: $col-md ) {
 	.footer-nav-wrap {

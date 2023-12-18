@@ -65,16 +65,19 @@ class Shortcodes {
 		}
 
 		$atts = shortcode_atts( [
-			'position'     => 'right',
-			'button-class' => 'is-transparent is-large is-em',
-			'show-map'     => true,
-			'relative'     => 'false',
-			'include'      => '',
-			'default-text' => __( 'Select a Location', 'cp-theme-default'),
+			'position'        => 'right',
+			'button-class'    => 'is-transparent is-large is-em',
+			'show-map'        => true,
+			'button-position' => 'bottom',
+			'relative'        => 'false',
+			'include'         => '',
+			'default-text'    => __( 'Select a Location', 'cp-theme-default'),
 		], $atts, 'cp-location-dropdown' );
 		
 		$include = array_filter( array_map( 'trim', explode( ',', $atts['include'] ) ) );
 		$location_id = get_query_var( 'cp_location_id' );
+
+		$show_button = ! empty( $atts['show-map'] ) && 'false' !== $atts['show-map'];
 		
 		if ( $location = \CP_Locations\Setup\Taxonomies\Location::get_rewrite_location() ) {
 			$location_id = $location['ID'];
@@ -84,6 +87,14 @@ class Shortcodes {
 		
 		do_action( 'cploc_multisite_switch_to_main_site' );
 		$locations = \CP_Locations\Models\Location::get_all_locations( true );
+
+		$button_html = sprintf(
+			'<a class="cp-button is-fullwidth is-em is-small" href="%s/locations">
+				<span class="material-icons">fmd_good</span>&nbsp;%s
+			</a>',
+			esc_url( get_home_url() ),
+			esc_html__( 'View on Map', 'cp-theme-default' ),
+		);
 		
 		ob_start(); ?>
 
@@ -101,7 +112,11 @@ class Shortcodes {
 			</div>
 			<div class="dropdown-menu" role="menu">
 				<div class="dropdown-content">
-					<div class="dropdown-item">
+					<div class="dropdown-item button-position-<?php echo $atts['button-position'] === 'bottom' ? 'bottom' : 'top'; ?>">
+						<?php if ( $show_button && 'top' === $atts['button-position'] ) : ?>
+							<?php echo $button_html; ?>
+						<?php endif; ?>
+
 						<?php foreach ( $locations as $location ) :
 							
 							if ( ! empty( $include ) && ! in_array( $location->ID, $include ) ) {
@@ -130,9 +145,9 @@ class Shortcodes {
 								</div>
 							</a>
 						<?php endforeach; ?>
-						
-						<?php if ( ! empty( $atts['show-map'] ) && 'false' !== $atts['show-map'] ) : ?>
-							<a class="cp-button is-fullwidth is-em is-small" href="<?php echo get_home_url(); ?>/locations"><?php _e( 'View on Map', 'cp-theme-default' ); ?></a>
+
+						<?php if ( $show_button && 'bottom' === $atts['button-position'] ) : ?>
+							<?php echo $button_html; ?>
 						<?php endif; ?>
 					</div>
 				</div>
